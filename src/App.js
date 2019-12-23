@@ -1,24 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
+import { initComponents } from './component'
+import {Editor} from './editor'
 import './App.css';
+import components, { useDataStore, saveItem } from './config'
+import 'antd/dist/antd.css'
 
 function App() {
+  const Components = initComponents(components);
+  const { data } = useDataStore()
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Editor components={Components} data={data} saveItem={saveItem} />
     </div>
   );
 }

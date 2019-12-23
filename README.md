@@ -1,68 +1,75 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## todo
 
-## Available Scripts
+- 根据配置数据渲染组件
 
-In the project directory, you can run:
+## 难点
 
-### `yarn start`
+1. 存储结构设计
+2. 渲染
+3. 移动组件
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+流程
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+2. 渲染可用组件列表
+2. 加载数据结构, 
+2. 使用数据渲染编辑区
+2. 移动鼠标点击响应可点击区域
+2. 激活区域组件
+3. 编辑属性
 
-### `yarn test`
+## 存储结构
+data : json
+```
+[
+    id:int, 唯一id,
+    type:string, 组件类型
+    props: Object, 属性集,
+    child: Array, 子节点
+]
+```
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+## 工作区
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+<div className={'j-editor'}>
+  <Row>
+    <Col span={4}><ComponentSelector
+      activeComponent={activeComponent}
+      components={components} /></Col>
+    <Col span={16}><ViewEditor
+      data={data}
+      components={components}
+      stateActiveComponent={stateActiveComponent} />
+    </Col>
+    <Col span={4}><PropEditor
+      component={component}
+      data={activeComponent}
+      saveHandle={saveItem}
+    /></Col>
+  </Row>
+</div>
+```
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. 组件选择区 ComponentSelector
+1. 组件编辑区 ViewEditor
+    1. 设置当前活动组件
+        - 移动激活layer
+        - 点击选择当前组件
+1. 属性编辑区 PropEditor
 
-### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Hook
+1. 返回值及修改值的Handle
+1. 状态通过副作用延时修改
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## 依赖组件
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+1. react-native-listener
+    - [NativeListener](https://www.helplib.com/GitHub/article_119880)
+2. [react-drag-and-drop](https://www.npmjs.com/package/react-drag-and-drop)
+    - [使用 Drag and Drop 给Web应用提升交互体验](https://www.cnblogs.com/jlfw/p/11809988.html)
+    - [参考](https://blog.csdn.net/weixin_34023982/article/details/91452188)
