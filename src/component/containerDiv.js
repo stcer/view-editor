@@ -9,7 +9,7 @@ export const ViewEditor = ({ value, style, children }) => {
 
 export const PropEditor = ({data, save}) => {
   const handleChange = (e) => {
-    console.log(e.target.value)
+    // console.log(e.target.value)
     data.props = {...data.props, value: e.target.value}
     save(data)
   }

@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import NativeListener from 'react-native-listener'
 
-
 /**
  * render component
  * @param item

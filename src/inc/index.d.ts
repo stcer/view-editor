@@ -1,12 +1,12 @@
-import {ReactDOM, ReactElement} from "react";
+import {ComponentType, ReactElement} from "react";
 
 /**
  * Components
  */
 declare interface  Component{
     components: []
-    ViewEditor:ReactDOM
-    PropEditor:ReactDOM
+    ViewEditor:ComponentType
+    PropEditor:ComponentType
     TYPE:string
     NAME:string
     DefProps:object

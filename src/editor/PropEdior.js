@@ -1,22 +1,31 @@
 import React from 'react'
 import { useComponentContext, useActiveContext } from '../inc'
 import { saveItem } from '../store'
+import StyleEditor from './StyleEditor'
 
 const PropEditor = function () {
   const {active} = useActiveContext();
   const {findComponentByType} = useComponentContext();
-  const component = active ? findComponentByType(active.type) : null
+  const element = []
+
+  if(active) {
+    const component = findComponentByType(active.type)
+    element.push(React.createElement(component.PropEditor, {
+      key: 'props',
+      data : active,
+      save: saveItem
+    }, []))
+    element.push(<StyleEditor key={"style"} active={active} onChange={(style) => {
+      active.props.style = style;
+      saveItem(active)
+    }
+    }/>)
+  }
 
   return (
     <div className={'propEditor'}>
       <h2>属性编辑</h2>
-      {component
-        ? React.createElement(component.PropEditor, {
-          data : active,
-          save: saveItem
-        }, [])
-        : ''
-      }
+      {element.map((el) => el)}
     </div>
   )
 }

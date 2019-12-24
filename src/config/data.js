@@ -9,7 +9,6 @@ export default [
       'style': {
         'width': '100%',
         'padding': '4px',
-        'background': '#f7f7f7',
         'border': '2px solid #fff'
       }
     },
@@ -34,7 +33,6 @@ export default [
           'style': {
             'width': '100%',
             'padding': '14px',
-            'background': '#f7f7f7',
             'border': '1px solid #fff'
           }
         },
