@@ -3,7 +3,7 @@ import React from 'react'
 import {
   ComponentsContext,
   ActiveComponentContext,
-  useActiveComponentContextValue,
+  useActiveContextValue,
   useComponentsContextValue
 } from '../inc'
 import { useData } from '../store'
@@ -15,7 +15,7 @@ import ViewEditor from './ViewEditor'
 
 const Editor = function ({ components, initData }) {
   const data = useData(initData)
-  const activeContextValue = useActiveComponentContextValue()
+  const activeContextValue = useActiveContextValue()
   const componentContextValue = useComponentsContextValue(components)
   return (
     <ComponentsContext.Provider value={componentContextValue}>

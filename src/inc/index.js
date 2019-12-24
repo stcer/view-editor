@@ -23,7 +23,7 @@ export const useComponentsContextValue = (components) => {
   }
 }
 
-export const useComponents = () => {
+export const useComponentContext = () => {
   return useContext(ComponentsContext)
 }
 
@@ -36,11 +36,11 @@ export const ActiveComponentContext = React.createContext({
   setActive: (item) => {}
 })
 
-export const useActiveComponent = () => {
+export const useActiveContext = () => {
   return useContext(ActiveComponentContext)
 }
 
-export const useActiveComponentContextValue = () => {
+export const useActiveContextValue = () => {
   const [active, setActive] = useState(null);
   return {active, setActive}
 }
@@ -57,6 +57,6 @@ export const DataContext = React.createContext({
   resetData: (data) => {},
 })
 
-export const useData = () => {
+export const useDataContext = () => {
   return useContext(DataContext)
 }

@@ -1,10 +1,10 @@
 import React from 'react'
-import { useComponents, useActiveComponent } from '../inc'
+import { useComponentContext, useActiveContext } from '../inc'
 import { saveItem } from '../store'
 
 const PropEditor = function () {
-  const {active} = useActiveComponent();
-  const {findComponentByType} = useComponents();
+  const {active} = useActiveContext();
+  const {findComponentByType} = useComponentContext();
   const component = active ? findComponentByType(active.type) : null
 
   return (

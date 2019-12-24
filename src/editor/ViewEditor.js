@@ -1,5 +1,5 @@
 import React from 'react'
-import { useComponents, useActiveComponent, renderComponentView, useMouseLayerPosition } from '../inc'
+import { useComponentContext, useActiveContext, renderComponentView, useMouseLayerPosition } from '../inc'
 import ViewEditLayer from './ViewEditLayer'
 
 const topDomClassName = 'components';
@@ -10,8 +10,8 @@ const topDomClassName = 'components';
  * @constructor
  */
 const ViewEditor = function ({data}) {
-  const {active, setActive} = useActiveComponent()
-  const {findComponentByType} = useComponents();
+  const {active, setActive} = useActiveContext()
+  const {findComponentByType} = useComponentContext();
 
   // edit layer
   const {isOnLayer, position, handler} = useMouseLayerPosition(topDomClassName)

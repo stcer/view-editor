@@ -32,3 +32,5 @@ export const NAME = 'div容器'
 export const DefProps = {
   value : 'this is a demo div'
 };
+
+export const isContainer = true;

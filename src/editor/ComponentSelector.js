@@ -1,10 +1,10 @@
 import React from 'react'
-import { useComponents, useActiveComponent } from '../inc'
+import { useComponentContext, useActiveContext } from '../inc'
 import { addItem } from '../store'
 
 const ComponentSelector = function () {
-  const {active} = useActiveComponent()
-  const {components} = useComponents()
+  const {active} = useActiveContext()
+  const {components} = useComponentContext()
 
   const newItem = (item) => {
     addItem({

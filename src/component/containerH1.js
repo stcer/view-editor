@@ -32,3 +32,4 @@ export const NAME = 'H1';
 export const DefProps = {
   value : 'this is a demo h1'
 };
+export const IsContainer = false;
