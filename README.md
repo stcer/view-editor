@@ -23,7 +23,10 @@ data : json
 [
     id:int, 唯一id,
     type:string, 组件类型
-    props: Object, 属性集,
+    props: {
+        "value": string,
+        "style": Object
+    }, 属性集,
     child: Array, 子节点
 ]
 ```
@@ -59,7 +62,19 @@ data : json
         - 点击选择当前组件
 1. 属性编辑区 PropEditor
 
+### 视图编辑区
 
+1. 容器对象
+    - 默认值对象为富文本
+3. 当前活动对象
+    2. 可移动对象
+    2. 可删除
+
+### 属性编辑区
+
+1. 根据配置渲染表单
+
+----------------
 
 ## Hook
 1. 返回值及修改值的Handle

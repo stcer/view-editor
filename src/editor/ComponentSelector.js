@@ -1,13 +1,16 @@
 import React from 'react'
-import { addItem } from '../config'
+import { useComponents, useActiveComponent } from '../inc'
+import { addItem } from '../store'
 
-const ComponentSelector = function ({ components, activeComponent }) {
+const ComponentSelector = function () {
+  const {active} = useActiveComponent()
+  const {components} = useComponents()
 
   const newItem = (item) => {
     addItem({
       'type': item.TYPE,
       'props': Object.assign({}, item.DefProps)
-    }, activeComponent)
+    }, active)
   }
 
   const child = components.map((item, index) => {
@@ -15,7 +18,7 @@ const ComponentSelector = function ({ components, activeComponent }) {
       <div
         key={item.TYPE}
         className=''
-        onClick={() => newItem(item, activeComponent)}
+        onClick={() => newItem(item)}
       >
         {item.NAME}
       </div>

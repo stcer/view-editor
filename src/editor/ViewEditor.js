@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
-import { getDOMPosition } from '../inc'
-import ViewEditLayer from './ViewEditLayer'
+import { getDOMPosition, useComponents, useActiveComponent } from '../inc'
 import { renderComponentView } from './index'
+import ViewEditLayer from './ViewEditLayer'
 
 const useMouseLayerPosition = function(topDomClassName) {
-
   const [isOnLayer, setOnLayer] = useState(false)
   const [position, setPosition] = useState({left: 0, top:0, width: 0, height:0});
 
@@ -33,19 +32,19 @@ const useMouseLayerPosition = function(topDomClassName) {
 const topDomClassName = 'components';
 
 /**
- * @param data
- * @param components
- * @param stateActiveComponent
+ * show all component
  * @returns {*}
  * @constructor
  */
-const ViewEditor = function ({ components, data, stateActiveComponent}) {
-  // show all component
+const ViewEditor = function ({data}) {
+  const {active, setActive} = useActiveComponent()
+  const {findComponentByType} = useComponents();
+
+  // edit layer
   const {isOnLayer, position, handler} = useMouseLayerPosition(topDomClassName)
-  const [activeComponent, setActiveComponent] = stateActiveComponent
 
   handler.handleClick = (item, e) => {
-    setActiveComponent(item)
+    setActive(item)
   }
 
   return (
@@ -54,16 +53,16 @@ const ViewEditor = function ({ components, data, stateActiveComponent}) {
       {data.map((item) => {
         return renderComponentView(
           item,
-          components.findComponentByType,
+          findComponentByType,
           handler,
-          activeComponent
+          active
         )
       })}
       </div>
       <ViewEditLayer
         isShow={isOnLayer}
         position={position}
-        activeCom={activeComponent} />
+        activeCom={active} />
     </div>
   )
 }

@@ -17,6 +17,6 @@ export const initComponents = (components) => {
   }
 
   return {
-    map, findComponentByType
+    map, findComponentByType, components
   }
 }
