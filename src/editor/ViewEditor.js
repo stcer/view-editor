@@ -1,32 +1,6 @@
-import React, { useState } from 'react'
-import { getDOMPosition, useComponents, useActiveComponent, renderComponentView } from '../inc'
+import React from 'react'
+import { useComponents, useActiveComponent, renderComponentView, useMouseLayerPosition } from '../inc'
 import ViewEditLayer from './ViewEditLayer'
-
-const useMouseLayerPosition = function(topDomClassName) {
-  const [isOnLayer, setOnLayer] = useState(false)
-  const [position, setPosition] = useState({left: 0, top:0, width: 0, height:0});
-
-  const onMouseOver = (e) => {
-    e.stopPropagation()
-    e.preventDefault()
-    setOnLayer(true)
-    setPosition(getDOMPosition(e.target, topDomClassName))
-  }
-
-  const onMouseOut = (e) => {
-    e.stopPropagation()
-    setOnLayer(false)
-  }
-
-  return {
-    isOnLayer,
-    position,
-    handler : {
-      onMouseOver,
-      onMouseOut,
-    }
-  }
-}
 
 const topDomClassName = 'components';
 
