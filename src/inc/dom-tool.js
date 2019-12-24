@@ -2,42 +2,39 @@ import React from 'react'
 import NativeListener from 'react-native-listener'
 
 export const getDOMPosition = (target, topDomClassName) => {
-  let current = target.offsetParent
-  let actualLeft = target.offsetLeft
-  let actualTop = target.offsetTop
-
-  while (current !== null) {
-    actualLeft += current.offsetLeft
-    actualTop += current.offsetTop
+  let left = 0
+  let top = 0
+  let current = target
+  do {
+    left += current.offsetLeft
+    top += current.offsetTop
 
     if (topDomClassName
       && current.className
       && topDomClassName === current.className
     ) {
-      break;
+      break
     }
-
     current = current.offsetParent
-  }
+  } while (current)
 
   return {
-    left: actualLeft,
-    top: actualTop,
+    left: left,
+    top: top,
     width: target.offsetWidth,
     height: target.offsetHeight,
   }
 }
 
-
 /**
  * render component
  * @param item
- * @param componentFactory
- * @param editHandler
- * @param activeComponent
+ * @param comMaker
+ * @param mouseHandler
+ * @param active
  * @returns {*}
  */
-export const renderComponentView = (item, componentFactory, editHandler, activeComponent) => {
+export const renderComponentView = (item, comMaker, mouseHandler, active) => {
   if (!item) {
     return
   }
@@ -46,23 +43,21 @@ export const renderComponentView = (item, componentFactory, editHandler, activeC
   let child = []
   if (item.child) {
     child = item.child.map((item) => {
-      return renderComponentView(item, componentFactory, editHandler, activeComponent)
+      return renderComponentView(item, comMaker, mouseHandler, active)
     })
   }
 
-  const outerProps = {}
-  outerProps.onMouseOver = editHandler.handleMouseOver
-  outerProps.onMouseLeave = editHandler.handleMouseOut
-  outerProps.onClick = (e) => {
+  const mouseHandles = { ...mouseHandler }
+  mouseHandles.onClick = (e) => {
     e.stopPropagation()
-    editHandler.handleClick(item, e)
+    mouseHandler.onClick(item, e)
   }
 
-  const component = componentFactory(item.type)
-  const isActive = activeComponent && item.id === activeComponent.id
+  const component = comMaker(item.type)
+  const isActive = active && item.id === active.id
   return (
     <div key={item.id} className={isActive ? 'activeComponent' : ''}>
-      <NativeListener {...outerProps}>
+      <NativeListener {...mouseHandles}>
         {React.createElement(component.ViewEditor, props, child)}
       </NativeListener>
     </div>

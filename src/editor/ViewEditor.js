@@ -6,14 +6,14 @@ const useMouseLayerPosition = function(topDomClassName) {
   const [isOnLayer, setOnLayer] = useState(false)
   const [position, setPosition] = useState({left: 0, top:0, width: 0, height:0});
 
-  const handleMouseOver = (e) => {
+  const onMouseOver = (e) => {
     e.stopPropagation()
     e.preventDefault()
     setOnLayer(true)
     setPosition(getDOMPosition(e.target, topDomClassName))
   }
 
-  const handleMouseOut = (e) => {
+  const onMouseOut = (e) => {
     e.stopPropagation()
     setOnLayer(false)
   }
@@ -22,8 +22,8 @@ const useMouseLayerPosition = function(topDomClassName) {
     isOnLayer,
     position,
     handler : {
-      handleMouseOver,
-      handleMouseOut,
+      onMouseOver,
+      onMouseOut,
     }
   }
 }
@@ -42,7 +42,7 @@ const ViewEditor = function ({data}) {
   // edit layer
   const {isOnLayer, position, handler} = useMouseLayerPosition(topDomClassName)
 
-  handler.handleClick = (item, e) => {
+  handler.onClick = (item, e) => {
     setActive(item)
   }
 
