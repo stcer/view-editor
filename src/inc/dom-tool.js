@@ -1,5 +1,7 @@
+import React from 'react'
+import NativeListener from 'react-native-listener'
 
-const getDOMPosition = (target, topDomClassName) => {
+export const getDOMPosition = (target, topDomClassName) => {
   let current = target.offsetParent
   let actualLeft = target.offsetLeft
   let actualTop = target.offsetTop
@@ -26,6 +28,43 @@ const getDOMPosition = (target, topDomClassName) => {
   }
 }
 
-export {
-  getDOMPosition
+
+/**
+ * render component
+ * @param item
+ * @param componentFactory
+ * @param editHandler
+ * @param activeComponent
+ * @returns {*}
+ */
+export const renderComponentView = (item, componentFactory, editHandler, activeComponent) => {
+  if (!item) {
+    return
+  }
+
+  const props = Object.assign({}, item.props)
+  let child = []
+  if (item.child) {
+    child = item.child.map((item) => {
+      return renderComponentView(item, componentFactory, editHandler, activeComponent)
+    })
+  }
+
+  const outerProps = {}
+  outerProps.onMouseOver = editHandler.handleMouseOver
+  outerProps.onMouseLeave = editHandler.handleMouseOut
+  outerProps.onClick = (e) => {
+    e.stopPropagation()
+    editHandler.handleClick(item, e)
+  }
+
+  const component = componentFactory(item.type)
+  const isActive = activeComponent && item.id === activeComponent.id
+  return (
+    <div key={item.id} className={isActive ? 'activeComponent' : ''}>
+      <NativeListener {...outerProps}>
+        {React.createElement(component.ViewEditor, props, child)}
+      </NativeListener>
+    </div>
+  )
 }

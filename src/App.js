@@ -4,7 +4,7 @@ import './App.css'
 import components from './config'
 import initData from './config/data'
 
-import { Editor } from './editor'
+import Editor from './editor'
 
 function App() {
   return (

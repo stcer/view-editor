@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import { getDOMPosition, useComponents, useActiveComponent } from '../inc'
-import { renderComponentView } from './index'
+import { getDOMPosition, useComponents, useActiveComponent, renderComponentView } from '../inc'
 import ViewEditLayer from './ViewEditLayer'
 
 const useMouseLayerPosition = function(topDomClassName) {
