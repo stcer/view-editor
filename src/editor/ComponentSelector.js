@@ -4,7 +4,7 @@ import { addItem } from '../store'
 
 const ComponentSelector = function () {
   const {active} = useActiveContext()
-  const {components} = useComponentContext()
+  const {map} = useComponentContext()
 
   const newItem = (item) => {
     addItem({
@@ -13,7 +13,7 @@ const ComponentSelector = function () {
     }, active)
   }
 
-  const child = components.map((item, index) => {
+  const child = map((item, index) => {
     return (
       <div
         key={item.TYPE}
