@@ -1,11 +1,3 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -51,12 +43,3 @@
   cursor: move;
 }
 
-.componentSelector,
-.propEditor{
-  background: #f7f7f7;
-  min-height: 400px;
-}
-
-.j-editor {
-  min-height: 400px;
-}

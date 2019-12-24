@@ -24,7 +24,7 @@ const PropEditor = function () {
 
   return (
     <div className={'propEditor'}>
-      <h2>属性编辑</h2>
+      <h3>属性编辑</h3>
       {element.map((el) => el)}
     </div>
   )

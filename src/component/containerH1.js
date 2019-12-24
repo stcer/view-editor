@@ -1,5 +1,5 @@
+import { Form, Input } from 'antd'
 import React from 'react'
-import { Form, Icon, Input, Button, Checkbox } from 'antd';
 
 export const ViewEditor = ({value, props, style}) => {
   return (
@@ -27,6 +27,7 @@ export const PropEditor = ({data, save}) => {
   )
 }
 
+export const ICON = 'info-circle';
 export const TYPE = 'h1';
 export const NAME = 'H1';
 export const DefProps = {

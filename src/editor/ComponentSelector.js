@@ -1,3 +1,4 @@
+import { Icon } from 'antd'
 import React from 'react'
 import { useComponentContext, useActiveContext } from '../inc'
 import { addItem } from '../store'
@@ -17,10 +18,11 @@ const ComponentSelector = function () {
     return (
       <div
         key={item.TYPE}
-        className=''
+        className='comItem'
         onClick={() => newItem(item)}
       >
-        {item.NAME}
+        <Icon type={item.ICON} theme="filled" />
+        &nbsp;{item.NAME}
       </div>
     )
   })

@@ -27,6 +27,7 @@ export const PropEditor = ({data, save}) => {
   )
 }
 
+export const ICON = 'plus-circle'
 export const TYPE = 'div'
 export const NAME = 'div容器'
 export const DefProps = {

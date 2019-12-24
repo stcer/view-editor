@@ -1,4 +1,4 @@
-import { Input, Button } from 'antd'
+import { Form, Input, Button } from 'antd'
 import React, { useState, useEffect } from 'react'
 
 const { TextArea } = Input
@@ -53,13 +53,14 @@ export default ({ active, onChange }) => {
   }
 
   return (
-    <div>
-      Style editor
-      <TextArea
-        rows={15}
-        value={style}
-        onChange={(e) => setStyle(e.target.value)} />
+    <Form>
+      <Form.Item label="Style editor">
+        <TextArea
+          rows={15}
+          value={style}
+          onChange={(e) => setStyle(e.target.value)} />
+      </Form.Item>
       <Button type="primary" onClick={handleSave}>Save</Button>
-    </div>
+    </Form>
   )
 }

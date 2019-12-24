@@ -22,9 +22,9 @@ const Editor = function ({ components, initData }) {
       <ActiveComponentContext.Provider value={activeContextValue}>
         <div className={'j-editor'}>
           <Row>
-            <Col span={4}><ComponentSelector /></Col>
-            <Col span={16}><ViewEditor data={data} /></Col>
-            <Col span={4}><PropEditor /></Col>
+            <Col span={3}><ComponentSelector /></Col>
+            <Col span={15}><ViewEditor data={data} /></Col>
+            <Col span={6}><PropEditor /></Col>
           </Row>
         </div>
       </ActiveComponentContext.Provider>

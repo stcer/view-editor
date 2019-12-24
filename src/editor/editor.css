@@ -1,3 +1,7 @@
+.j-editor {
+    min-height: 100vh;
+}
+
 .j-editor .edit_layer,
 .ant-modal .edit_layer{
     opacity: 0.5;
@@ -8,7 +12,24 @@
     z-index: 10000000;
 }
 
-
 .j-editor .activeComponent {
     border: 1px solid #c00;
+}
+
+.viewEditor {
+    padding:20px;
+    min-height: 100vh;
+    border-left: 1px solid #ccd;
+    border-right: 1px solid #ccd;
+}
+
+.propEditor,
+.componentSelector {
+    background: #f7f7f7;
+    padding:12px;
+    min-height: 100vh;
+}
+
+.componentSelector .comItem {
+    font-size: 16px;
 }

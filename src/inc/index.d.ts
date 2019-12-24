@@ -7,6 +7,7 @@ declare interface  Component{
     components: []
     ViewEditor:ComponentType
     PropEditor:ComponentType
+    ICON:string
     TYPE:string
     NAME:string
     DefProps:object
