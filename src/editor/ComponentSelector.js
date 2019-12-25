@@ -1,28 +1,42 @@
 import { Icon } from 'antd'
 import React from 'react'
 import { useComponentContext, useActiveContext } from '../inc'
-import { addItem } from '../store'
+import { addItem, saveItem } from '../store'
 
 const ComponentSelector = function () {
   const {active} = useActiveContext()
-  const {map} = useComponentContext()
+  const {map, findComponentByType} = useComponentContext()
 
-  const newItem = (item) => {
-    addItem({
-      'type': item.TYPE,
-      'props': Object.assign({}, item.DefProps)
-    }, active)
+  /**
+   * 向容器增加新组件
+   * @param component
+   */
+  const newItem = (component) => {
+    const props = Object.assign({}, component.props);
+    const newComponent = {
+      ...component.create(props),
+      type: component.TYPE
+    }
+    if(active) {
+      const parent = findComponentByType(active.type)
+      if(parent.appendChild){
+        parent.appendChild(active, newComponent);
+        saveItem(active, newComponent)
+      }
+    } else {
+      addItem(newComponent)
+    }
   }
 
-  const child = map((item, index) => {
+  const child = map((component, index) => {
     return (
       <div
-        key={item.TYPE}
+        key={component.TYPE}
         className='comItem'
-        onClick={() => newItem(item)}
+        onClick={() => newItem(component)}
       >
-        <Icon type={item.ICON} theme="filled" />
-        &nbsp;{item.NAME}
+        <Icon type={component.icon} theme="filled" />
+        &nbsp;{component.name}
       </div>
     )
   })

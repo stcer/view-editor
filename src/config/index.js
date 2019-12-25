@@ -1,7 +1,23 @@
 
-import {ContainerDiv, containerH1} from "../component/index"
+import {ContainerDiv, containerH1, Row2Col} from "../component/index"
 
 export default [
-  ContainerDiv,
-  containerH1
+  {
+    ...ContainerDiv,
+    name : 'div容器1',
+  },
+
+  containerH1,
+
+  {
+    ...containerH1,
+    TYPE: 'H2',
+    name: 'H2',
+    props: {
+      label: 'h2',
+      value : 'this is a tag h2 demo value'
+    }
+  },
+
+  Row2Col
 ]

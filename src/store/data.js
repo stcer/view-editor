@@ -41,11 +41,14 @@ export const useData = (initData) => {
   return data;
 }
 
-
 /**
  * @param item
+ * @param newComponent
  */
-export const saveItem = (item) => {
+export const saveItem = (item, newComponent) => {
+  if(newComponent) {
+    newComponent.id = getNextId()
+  }
   store.set((state) => {
     const replaceItem = (items) => {
       items.forEach((com, index) => {

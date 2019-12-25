@@ -1,36 +1,58 @@
-import { Form, Input } from 'antd'
 import React from 'react'
+import { Form, Input, Select } from 'antd'
 
-export const ViewEditor = ({value, props, style}) => {
+const { Option } = Select
+
+export const TYPE = 'h1'
+export const icon = 'info-circle'
+export const name = 'H1'
+export const isContainer = false
+
+const JSelect = ({options, defValue, onChange}) => {
   return (
-    <h1 style={{...style}}>{value}</h1>
+    <Select defaultValue={defValue} onChange={onChange}>
+      {options.map((value, index) => <Option key={index} value={value}>{value}</Option>)}
+    </Select>
   )
 }
 
-export const PropEditor = ({data, save}) => {
-  const handleChange = (e) => {
-    console.log(e.target.value)
-    data.props = {...data.props, value: e.target.value}
-    save(data)
+export const ViewEditor = ({ value, label, style }) => {
+  return (
+    React.createElement(label || TYPE, { style }, [value])
+  )
+}
+
+export const PropEditor = ({ data, saveHandle }) => {
+  const saveItem = (key, value) => {
+    data.props = { ...data.props, [key]: value }
+    saveHandle(data)
   }
 
-  const {props} = data
-  const formItemLayout = null;
+  const { props } = data
+  const labels = [
+    'h1', 'h2', 'h3',
+    'h4', 'h5', 'h6'
+  ]
+  const { label = TYPE } = data.props
   return (
-    <div>
-      <Form>
-        <Form.Item label="文本" {...formItemLayout}>
-          <Input onChange={handleChange} placeholder="Basic usage" value={props.value} />
-        </Form.Item>
-      </Form>
-    </div>
+    <Form>
+      <Form.Item label="类型">
+        <JSelect options={labels} defValue={label} onChange={(e) => saveItem('label', e)} />
+      </Form.Item>
+      <Form.Item label="文本">
+        <Input
+          onChange={(e) => saveItem('value', e.target.value)}
+          value={props.value} />
+      </Form.Item>
+    </Form>
   )
 }
 
-export const ICON = 'info-circle';
-export const TYPE = 'h1';
-export const NAME = 'H1';
-export const DefProps = {
-  value : 'this is a demo h1'
-};
-export const IsContainer = false;
+export const create = (props) => {
+  return {
+    'props': {
+      value: 'this is a demo h1',
+      ...props
+    }
+  }
+}

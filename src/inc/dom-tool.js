@@ -1,42 +1,35 @@
 import React, { useState } from 'react'
-import NativeListener from 'react-native-listener'
+// import NativeListener from 'react-native-listener'
 
-/**
- * render component
- * @param item
- * @param comMaker
- * @param mouseHandler
- * @param active
- * @returns {*}
- */
-export const renderComponentView = (item, comMaker, mouseHandler, active) => {
-  if (!item) {
-    return
-  }
+export const renderComponents = (data, comMaker, mouseHandler, active) => {
+  const render = (item) => {
+    if (!item) {
+      return
+    }
 
-  const props = Object.assign({}, item.props)
-  let child = []
-  if (item.child) {
-    child = item.child.map((item) => {
-      return renderComponentView(item, comMaker, mouseHandler, active)
-    })
-  }
 
-  const mouseHandles = { ...mouseHandler }
-  mouseHandles.onClick = (e) => {
-    e.stopPropagation()
-    mouseHandler.onClick(item, e)
-  }
+    let child = []
+    if (item.child) {
+      child = item.child.map((com) => render(com))
+    }
 
-  const component = comMaker(item.type)
-  const isActive = active && item.id === active.id
-  return (
-    <div key={item.id} className={isActive ? 'activeComponent' : ''}>
-      <NativeListener {...mouseHandles}>
+    const mouseHandles = { ...mouseHandler }
+    mouseHandles.onClick = (e) => {
+      e.stopPropagation()
+      mouseHandler.onClick(item, e)
+    }
+    const props = Object.assign({render, renders}, item.props)
+    const component = comMaker(item.type)
+    const isActive = active && item.id === active.id
+    return (
+      <div {...mouseHandles} key={item.id} className={isActive ? 'activeComponent' : ''}>
         {React.createElement(component.ViewEditor, props, child)}
-      </NativeListener>
-    </div>
-  )
+      </div>
+    )
+  }
+
+  const renders = (data) => data.map((item) => render(item))
+  return renders(data)
 }
 
 const getDOMPosition = (target, topDomClassName) => {

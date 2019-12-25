@@ -3,17 +3,6 @@ import {ComponentType, ReactElement} from "react";
 /**
  * Components
  */
-declare interface  Component{
-    components: []
-    ViewEditor:ComponentType
-    PropEditor:ComponentType
-    ICON:string
-    TYPE:string
-    NAME:string
-    DefProps:object
-    isContainer:boolean
-}
-
 declare interface ComponentDataProps {
     value:string|[]
     style:object
@@ -25,6 +14,19 @@ declare interface ComponentData {
     type:string
     props:ComponentDataProps
     child:ComponentData[]
+}
+
+declare interface  Component{
+    TYPE:string
+    ViewEditor:ComponentType
+    PropEditor:ComponentType
+    create():ComponentData
+    appendChild(selfData:ComponentData, child:ComponentData):void
+    props:object
+    child: Component[]
+    icon:string
+    name:string
+    isContainer:boolean
 }
 
 declare interface MapFunc {

@@ -7,15 +7,15 @@ export const ViewEditor = ({ value, style, children }) => {
   )
 }
 
-export const PropEditor = ({data, save}) => {
+export const PropEditor = ({ data, saveHandle }) => {
   const handleChange = (e) => {
     // console.log(e.target.value)
-    data.props = {...data.props, value: e.target.value}
-    save(data)
+    data.props = { ...data.props, value: e.target.value }
+    saveHandle(data)
   }
 
-  const {props} = data
-  const formItemLayout = null;
+  const { props } = data
+  const formItemLayout = null
   return (
     <div>
       <Form>
@@ -27,11 +27,23 @@ export const PropEditor = ({data, save}) => {
   )
 }
 
-export const ICON = 'plus-circle'
-export const TYPE = 'div'
-export const NAME = 'div容器'
-export const DefProps = {
-  value : 'this is a demo div'
-};
+export const create = (props) => {
+  return {
+    'props': {
+      value: 'this is a demo div',
+      ...props
+    },
+    child : []
+  }
+}
 
-export const isContainer = true;
+export const appendChild = (selfData, child) => {
+  selfData.child.push(child)
+}
+
+export const TYPE = 'div'
+export const icon = 'plus-circle'
+export const name = 'div容器'
+export const isContainer = true
+
+

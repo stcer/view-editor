@@ -2,6 +2,19 @@
 
 - 根据配置数据渲染组件
 
+## 组件的定义
+
+核心逻辑:　根据组件的存储结构, 渲染/增加子节点/编辑属性高度自治
+
+### action
+
+1. 组件.创建初始化()
+1. 组件.增加子节点 : 组件.json
+1. 组件.选中(激活组件实例)
+3. 组件.视图编辑器渲染(json)
+3. 组件.属性编辑渲染(json)
+
+
 ## 难点
 
 1. 存储结构设计
@@ -21,16 +34,19 @@
 data : json
 ```
 [
-    id:int, 唯一id,
-    type:string, 组件类型
-    props: {
-        "value": string,
-        "style": Object
-    }, 属性集,
-    child: Array, 子节点
+    {
+        id:int, 唯一id,
+        type:string, 组件类型
+        props: { 
+            // 根据组件自行定义
+            "value": string,
+            "style": Object,
+            "child": []
+        }, 
+        child: Array, 子节点
+    }
 ]
 ```
-
 
 ## 工作区
 
@@ -92,7 +108,6 @@ data : json
 ## Hook
 1. 返回值及修改值的Handle
 1. 状态通过副作用延时修改
-
 
 ## 依赖组件
 

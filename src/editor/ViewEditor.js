@@ -1,5 +1,5 @@
 import React from 'react'
-import { useComponentContext, useActiveContext, renderComponentView, useMouseLayerPosition } from '../inc'
+import { useComponentContext, useActiveContext, useMouseLayerPosition, renderComponents } from '../inc'
 import ViewEditLayer from './ViewEditLayer'
 
 const topDomClassName = 'components';
@@ -23,14 +23,12 @@ const ViewEditor = function ({data}) {
   return (
     <div className={'viewEditor'}>
       <div className={topDomClassName} style={{position: 'relative'}}>
-      {data.map((item) => {
-        return renderComponentView(
-          item,
+      {renderComponents(data,
           findComponentByType,
           handler,
           active
         )
-      })}
+      }
       </div>
       <ViewEditLayer
         isShow={isOnLayer}
