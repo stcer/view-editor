@@ -1,49 +1,40 @@
 import { Form, Input } from 'antd'
 import React from 'react'
 
-export const ViewEditor = ({ value, style, children }) => {
+export const ViewEditor = ({ value, style, child, renderNodes }) => {
   return (
-    <div style={{ ...style }}>{value}{children}</div>
+    <div style={{ ...style }}>{value}{renderNodes(child || [])}</div>
   )
 }
 
-export const PropEditor = ({ data, saveHandle }) => {
-  const handleChange = (e) => {
-    // console.log(e.target.value)
-    data.props = { ...data.props, value: e.target.value }
-    saveHandle(data)
-  }
-
+export const PropEditor = ({ data, saveProp }) => {
   const { props } = data
-  const formItemLayout = null
   return (
-    <div>
-      <Form>
-        <Form.Item label="富文本内容" {...formItemLayout}>
-          <Input onChange={handleChange} placeholder="Basic usage" value={props.value} />
-        </Form.Item>
-      </Form>
-    </div>
+    <Form>
+      <Form.Item label="富文本内容">
+        <Input
+          onChange={(e) => saveProp({value: e.target.value})}
+         value={props.value} />
+      </Form.Item>
+    </Form>
   )
 }
 
 export const create = (props) => {
   return {
-    'props': {
+    props: {
       value: 'this is a demo div',
-      ...props
+      ...props,
+      child : []
     },
-    child : []
   }
 }
 
 export const appendChild = (selfData, child) => {
-  selfData.child.push(child)
+  selfData.props.child.push(child)
 }
 
 export const TYPE = 'div'
 export const icon = 'plus-circle'
 export const name = 'div容器'
 export const isContainer = true
-
-

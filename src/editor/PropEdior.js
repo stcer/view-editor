@@ -8,13 +8,18 @@ const PropEditor = function () {
   const {findComponentByType} = useComponentContext();
   const element = []
 
+  const saveProp = (value) => {
+    active.props = { ...active.props, ...value }
+    saveItem(active)
+  }
+
   if(active) {
     const component = findComponentByType(active.type)
-    console.log(active)
     element.push(React.createElement(component.PropEditor, {
       key: 'props',
       data : active,
-      saveHandle: saveItem
+      saveHandle: saveItem,
+      saveProp
     }, []))
     element.push(<StyleEditor key={"style"} active={active} onChange={(style) => {
       active.props.style = style;

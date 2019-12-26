@@ -2,15 +2,9 @@ import React, { useState } from 'react'
 // import NativeListener from 'react-native-listener'
 
 export const renderComponents = (data, comMaker, mouseHandler, active) => {
-  const render = (item) => {
+  const renderNode = (item) => {
     if (!item) {
       return
-    }
-
-
-    let child = []
-    if (item.child) {
-      child = item.child.map((com) => render(com))
     }
 
     const mouseHandles = { ...mouseHandler }
@@ -18,18 +12,23 @@ export const renderComponents = (data, comMaker, mouseHandler, active) => {
       e.stopPropagation()
       mouseHandler.onClick(item, e)
     }
-    const props = Object.assign({render, renders}, item.props)
+
+    const props = Object.assign({renderNode, renderNodes}, item.props)
     const component = comMaker(item.type)
     const isActive = active && item.id === active.id
+
     return (
-      <div {...mouseHandles} key={item.id} className={isActive ? 'activeComponent' : ''}>
-        {React.createElement(component.ViewEditor, props, child)}
+      <div {...mouseHandles}
+         id={"com-" + item.id}
+         key={item.id}
+         className={isActive ? 'activeComponent' : ''}>
+        {React.createElement(component.ViewEditor, props)}
       </div>
     )
   }
 
-  const renders = (data) => data.map((item) => render(item))
-  return renders(data)
+  const renderNodes = (data) => data.map((item) => renderNode(item))
+  return renderNodes(data)
 }
 
 const getDOMPosition = (target, topDomClassName) => {

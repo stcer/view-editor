@@ -22,26 +22,21 @@ export const ViewEditor = ({ value, label, style }) => {
   )
 }
 
-export const PropEditor = ({ data, saveHandle }) => {
-  const saveItem = (key, value) => {
-    data.props = { ...data.props, [key]: value }
-    saveHandle(data)
-  }
-
+export const PropEditor = ({ data, saveProp }) => {
   const { props } = data
-  const labels = [
-    'h1', 'h2', 'h3',
-    'h4', 'h5', 'h6'
-  ]
+  const labels = ['h1', 'h2', 'h3', 'h4', 'h5']
   const { label = TYPE } = data.props
   return (
     <Form>
       <Form.Item label="类型">
-        <JSelect options={labels} defValue={label} onChange={(e) => saveItem('label', e)} />
+        <JSelect
+          options={labels}
+          defValue={label}
+          onChange={(e) => saveProp({label: e})} />
       </Form.Item>
       <Form.Item label="文本">
         <Input
-          onChange={(e) => saveItem('value', e.target.value)}
+          onChange={(e) => saveProp({value: e.target.value})}
           value={props.value} />
       </Form.Item>
     </Form>

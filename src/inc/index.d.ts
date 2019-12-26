@@ -6,14 +6,14 @@ import {ComponentType, ReactElement} from "react";
 declare interface ComponentDataProps {
     value:string|[]
     style:object
-    title?:string
+    title?:string,
+    child?:[]
 }
 
 declare interface ComponentData {
     id:number
     type:string
     props:ComponentDataProps
-    child:ComponentData[]
 }
 
 declare interface  Component{
@@ -60,8 +60,8 @@ declare function useActiveContextValue(): ActiveComponentContext
 /**
  * dom tool
  */
-declare function renderComponentView(
-    item: ComponentData,
+declare function renderComponents(
+    data: ComponentData[],
     comMaker:FindComponent,
     mouseHandler:object,
     active: ComponentData

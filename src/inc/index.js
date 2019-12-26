@@ -11,11 +11,15 @@ export const ComponentsContext = React.createContext({
 
 export const useComponentsContextValue = (components) => {
   const map = (callback) => {
-    return components.map(callback)
+    return components.forEach((item, index) => {
+      item.child.forEach(callback)
+    })
   }
 
+  const componentRow = [];
+  map((item) => componentRow.push(item))
   const findComponentByType = (type) => {
-    return components.find((item) => item.TYPE === type)
+    return componentRow.find((item) => item.TYPE === type)
   }
 
   return {

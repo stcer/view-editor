@@ -60,7 +60,7 @@ export default ({ active, onChange }) => {
           value={style}
           onChange={(e) => setStyle(e.target.value)} />
       </Form.Item>
-      <Button type="primary" onClick={handleSave}>Save</Button>
+      <Button type="primary" onClick={handleSave}>Update style</Button>
     </Form>
   )
 }
