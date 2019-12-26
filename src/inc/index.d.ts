@@ -90,3 +90,5 @@ declare interface MouseState {
 }
 
 declare function useMouseLayerPosition(topDomClassName: string):MouseState
+declare function fixArrayLength(arr: [], length:number, fillItem:any):[]
+declare function fixNumberRange(n: number, min:number, max:number):number

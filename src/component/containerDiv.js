@@ -1,22 +1,17 @@
-import { Form, Input } from 'antd'
 import React from 'react'
+import RenderContainerChild from './RenderContainerChild'
 
 export const ViewEditor = ({ value, style, child, renderNodes }) => {
   return (
-    <div style={{ ...style }}>{value}{renderNodes(child || [])}</div>
+    <div style={{ ...style }}>
+      <RenderContainerChild child={child} renderNodes={renderNodes} />
+    </div>
   )
 }
 
 export const PropEditor = ({ data, saveProp }) => {
-  const { props } = data
   return (
-    <Form>
-      <Form.Item label="富文本内容">
-        <Input
-          onChange={(e) => saveProp({value: e.target.value})}
-         value={props.value} />
-      </Form.Item>
-    </Form>
+    <span />
   )
 }
 

@@ -1,17 +1,33 @@
 
-import {ContainerDiv, containerH1, RowCol2, RowCol3, Tab} from "../component/index"
+import {ContainerDiv, containerH1, MulCol, RichText, Tab} from "../component/index"
 
 export default [
   {
-    groupName : '容器',
+    groupName : '布局容器',
     child: [
       {
         ...ContainerDiv,
         name : '一列布局',
       },
 
-      RowCol2,
-      RowCol3,
+      MulCol,
+      {
+        ...MulCol,
+        TYPE: 'mul-col-3',
+        name: '三列布局',
+        props: {
+          cols : [
+            {width: 8},
+            {width: 8},
+            {width: 8},
+          ],
+          child: [
+            [],
+            [],
+            [],
+          ]
+        }
+      },
       Tab
     ]
   }, {
@@ -21,7 +37,7 @@ export default [
 
       {
         ...containerH1,
-        TYPE: 'H2',
+        TYPE: 'h2',
         name: 'H2',
         props: {
           label: 'h2',
@@ -31,14 +47,14 @@ export default [
 
       {
         ...containerH1,
-        TYPE: 'H3',
+        TYPE: 'h3',
         name: 'H3',
         props: {
           label: 'h3',
           value : 'this is a tag h3 demo value'
         }
       },
-
+      RichText,
       {
         ...containerH1,
         TYPE: 'p',

@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 
 export * from './dom-tool'
+export * from './tool'
 
 export const ComponentsContext = React.createContext({
   components: [],

@@ -42,7 +42,7 @@ data : json
             "value": string,
             "style": Object,
             "child": []
-        }, 
+        },
         child: Array, 子节点
     }
 ]

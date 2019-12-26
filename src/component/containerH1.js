@@ -8,13 +8,6 @@ export const icon = 'info-circle'
 export const name = 'H1'
 export const isContainer = false
 
-const JSelect = ({options, defValue, onChange}) => {
-  return (
-    <Select defaultValue={defValue} onChange={onChange}>
-      {options.map((value, index) => <Option key={index} value={value}>{value}</Option>)}
-    </Select>
-  )
-}
 
 export const ViewEditor = ({ value, label, style }) => {
   return (
@@ -25,6 +18,7 @@ export const ViewEditor = ({ value, label, style }) => {
 export const PropEditor = ({ data, saveProp }) => {
   const { props } = data
   const labels = ['h1', 'h2', 'h3', 'h4', 'h5']
+  console.log(data.props)
   const { label = TYPE } = data.props
   return (
     <Form>
@@ -40,6 +34,14 @@ export const PropEditor = ({ data, saveProp }) => {
           value={props.value} />
       </Form.Item>
     </Form>
+  )
+}
+
+const JSelect = ({options, defValue, onChange}) => {
+  return (
+    <Select defaultValue={defValue} onChange={onChange}>
+      {options.map((value, index) => <Option key={index} value={value}>{value}</Option>)}
+    </Select>
   )
 }
 

@@ -1,46 +1,71 @@
-import { Tabs } from 'antd'
+import { Tabs, Form, Input } from 'antd'
 import React from 'react'
+import { fixArrayLength, fixNumberRange } from '../inc'
+import RenderContainerChild from './RenderContainerChild'
 
-const { TabPane } = Tabs;
-let SelCol = null;
+const { TabPane } = Tabs
+let SelCol = 0
 
-export const ViewEditor = ({ n, names, style, child, renderNodes }) => {
+export const ViewEditor = ({ panes, style, child, renderNodes }) => {
   return (
-    <Tabs defaultActiveKey="1">
-      <TabPane tab="Tab 1" key="1">
-        Content of Tab Pane 1
-      </TabPane>
-      <TabPane tab="Tab 2" key="2">
-        Content of Tab Pane 2
-      </TabPane>
-      <TabPane tab="Tab 3" key="3">
-        Content of Tab Pane 3
-      </TabPane>
+    <Tabs
+      defaultActiveKey="1"
+      onChange={
+        (key) => {
+          SelCol = panes.findIndex((item) => item.key == key)
+          if(SelCol === -1) {
+            SelCol = 0;
+          }
+          console.log('Tab SelCol:', SelCol);
+        }
+      }>
+      {panes.map((item, index) =>
+        <TabPane tab={item.title} key={item.key}>
+          <RenderContainerChild child={child[index]} renderNodes={renderNodes} />
+        </TabPane>
+      )}
     </Tabs>
   )
 }
 
-export const PropEditor = ({data, saveProp}) => {
+export const PropEditor = ({ data, saveProp }) => {
+  const {props} = data;
+  const {panes} = props;
+  const setTabN = (n) => {
+    saveProp({
+      panes: fixArrayLength(panes, fixNumberRange(n, 1, 5), (i) => {
+        return {title: ('Tab ' + (i + 1)), 'key': i + 1}
+      })
+    })
+  }
   return (
-    <div>Todo</div>
+    <Form>
+      <Form.Item label="Tab数">
+        <Input
+          onChange={(e) => setTabN(e.target.value)}
+          value={panes.length}
+        />
+      </Form.Item>
+    </Form>
   )
 }
 
 export const icon = 'plus-circle'
 export const TYPE = 'tab'
 export const name = 'tab标签'
-export const isContainer = false;
+export const isContainer = false
 
 export const appendChild = (selfData, child) => {
-  selfData.props.child[SelCol - 1].push(child)
+  selfData.props.child[SelCol].push(child)
 }
 
 export const create = (props) => {
   return {
-    'props': {
-      n: 3,
-      names: [
-
+    props: {
+      panes: [
+        {'title':  'Tab 1', 'key': 1},
+        {'title':  'Tab 2', 'key': 2},
+        {'title':  'Tab 3', 'key': 3},
       ],
       child: [
         [],

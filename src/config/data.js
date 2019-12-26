@@ -3,7 +3,6 @@ export default [
     'id': 1,
     'type': 'div',
     'props': {
-      'value': 'this is a demo div',
       'title': 'div容器的标题',
       'style': {
         'width': '100%',
@@ -15,10 +14,7 @@ export default [
           'id': 2,
           'type': 'h1',
           'props': {
-            'value': 'This is a my title',
-            'style': {
-              'className': 'top-title'
-            }
+            'value': 'This is a my title H1',
           }
         },
 
@@ -26,7 +22,6 @@ export default [
           'id': 3,
           'type': 'div',
           'props': {
-            'value': 'this is a demo div2',
             'title': 'div容器的标题',
             'style': {
               'width': '100%',
@@ -36,12 +31,10 @@ export default [
             'child': [
               {
                 'id': 4,
-                'type': 'h1',
+                'type': 'h2',
                 'props': {
-                  'value': 'This is a my title2',
-                  'style': {
-                    'className': 'top-title'
-                  }
+                  label : 'h2',
+                  'value': 'This is a my title h2',
                 }
               },
             ]
@@ -54,36 +47,77 @@ export default [
 
   {
     'id': 5,
-    'type': 'h1',
+    'type': 'div',
     'props': {
-      'value': 'This is a my title',
+
     }
   },
 
   {
     'id': 6,
-    'type': 'div-col-2',
+    'type': 'mul-col-2',
     'props': {
-      col1: {
-        width: 12,
-        value: 'col1-value',
-      },
-      col2: {
-        width: 12,
-        value: 'col1-value',
-      },
+      cols: [
+        {width: 12},
+        {width: 12},
+      ],
       child: [
-        [{
+        [],
+        [
+          {
             'id': 7,
-            'type': 'h1',
-            'props': {
-              'label': 'h2',
-              'value': 'This is a my title',
+            'type': 'tab',
+            props: {
+              panes: [
+                {'title':  'Tab 1', 'key': 1},
+                {'title':  'Tab 2', 'key': 2},
+                {'title':  'Tab 3', 'key': 3},
+              ],
+              child: [
+                [],
+                [],
+                [],
+                [],
+                []
+              ]
             }
-          },
-        ],
-        []
+          }
+        ]
       ]
     }
   },
+
+  {
+    'id': 8,
+    'type': 'mul-col-3',
+    props: {
+      cols : [
+        {width: 8},
+        {width: 8},
+        {width: 8},
+      ],
+      child: [
+        [],
+        [{
+          'id': 9,
+          'type': 'tab',
+          props: {
+            panes: [
+              {'title':  'Tab 1', 'key': 1},
+              {'title':  'Tab 2', 'key': 2},
+              {'title':  'Tab 3', 'key': 3},
+            ],
+            child: [
+              [],
+              [],
+              [],
+              [],
+              []
+            ]
+          }
+        }],
+        [],
+      ]
+    }
+  }
 ]

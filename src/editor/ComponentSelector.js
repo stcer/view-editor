@@ -37,7 +37,7 @@ const ComponentSelector = function () {
   return (
     <div className={'componentSelector'}>
     <Collapse
-      defaultActiveKey={['0']}
+      defaultActiveKey={['0', '1']}
       bordered={false}
       expandIcon={
         ({ isActive }) => <Icon type="caret-right" rotate={isActive ? 90 : 0} />
