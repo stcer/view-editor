@@ -7,7 +7,7 @@ declare interface ComponentDataProps {
     value:string|[]
     style:object
     title?:string,
-    child?:[]
+    child?:Component[]
 }
 
 declare interface ComponentData {
@@ -22,7 +22,7 @@ declare interface  Component{
     PropEditor:ComponentType
     create():ComponentData
     appendChild(selfData:ComponentData, child:ComponentData):void
-    props:object
+    props:ComponentDataProps
     child: Component[]
     icon:string
     name:string

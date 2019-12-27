@@ -1,25 +1,55 @@
-## todo
+# 概述
 
-- 根据配置数据渲染组件
+页面配置数据编辑器, 流程:
+1. 将页面(pc/mobile)dom树(组件)抽象为json数据
+2. 可视化编辑抽象数据
+3. 进一步将配置对象依赖各端组件渲染为
+    1. 小程序展示
+    2. pc/h5 react/vue或服务端渲染
+    
+在此基础可进一步拓展:
+1. 页面/组件代码生成
+2. 表单设计器
 
 ## 组件的定义
 
 核心逻辑:　根据组件的存储结构, 渲染/增加子节点/编辑属性高度自治
 
+```typescript
+declare interface  Component{
+    TYPE:string
+    ViewEditor:ComponentType
+    PropEditor:ComponentType
+    create():ComponentData
+    appendChild(selfData:ComponentData, child:ComponentData):void
+    props:ComponentDataProps
+    child: Component[]
+    icon:string
+    name:string
+    isContainer:boolean
+}
+
+declare interface ComponentDataProps {
+    value:string|[]
+    style:object
+    title?:string,
+    child?:Component[]
+}
+
+declare interface ComponentData {
+    id:number
+    type:string
+    props:ComponentDataProps
+}
+```
+
 ### action
 
 1. 组件.创建初始化()
-1. 组件.增加子节点 : 组件.json
+1. 组件.增加子节点(compenent) : 组件.json
 1. 组件.选中(激活组件实例)
 3. 组件.视图编辑器渲染(json)
 3. 组件.属性编辑渲染(json)
-
-
-## 难点
-
-1. 存储结构设计
-2. 渲染
-3. 移动组件
 
 流程
 
@@ -30,7 +60,7 @@
 2. 激活区域组件
 3. 编辑属性
 
-## 存储结构
+## 配置存储结构
 data : json
 ```
 [
@@ -51,23 +81,18 @@ data : json
 ## 工作区
 
 ```
+<ComponentsContext.Provider value={componentContextValue}>
+<ActiveComponentContext.Provider value={activeContextValue}>
 <div className={'j-editor'}>
+  <ToolBar history={history} />
   <Row>
-    <Col span={4}><ComponentSelector
-      activeComponent={activeComponent}
-      components={components} /></Col>
-    <Col span={16}><ViewEditor
-      data={data}
-      components={components}
-      stateActiveComponent={stateActiveComponent} />
-    </Col>
-    <Col span={4}><PropEditor
-      component={component}
-      data={activeComponent}
-      saveHandle={saveItem}
-    /></Col>
+    <Col span={3}><ComponentSelector /></Col>
+    <Col span={15}><ViewEditor data={data} /></Col>
+    <Col span={6}><PropEditor /></Col>
   </Row>
 </div>
+</ActiveComponentContext.Provider>
+</ComponentsContext.Provider>
 ```
 
 
@@ -106,7 +131,7 @@ data : json
 ----------------
 
 ## Hook
-1. 返回值及修改值的Handle
+1. 返回状态对象及其修改的Handle
 1. 状态通过副作用延时修改
 
 ## 依赖组件

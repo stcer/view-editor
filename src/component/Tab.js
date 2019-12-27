@@ -16,7 +16,6 @@ export const ViewEditor = ({ panes, style, child, renderNodes }) => {
           if(SelCol === -1) {
             SelCol = 0;
           }
-          console.log('Tab SelCol:', SelCol);
         }
       }>
       {panes.map((item, index) =>
