@@ -128,7 +128,21 @@ data : json, 参考config/data.js
 
 1. 根据配置渲染表单
     - 参考antd表单设计
+    
+## 拖拽解决
 
+1. 组件可以通过拖拽放置到容器
+2. 调整同级组件顺序
+3. 将组件整体更换父容器
+
+参考 
+- [React DnD](https://react-dnd.github.io/react-dnd/examples)
+    - [npm: react-drag-and-drop](https://www.npmjs.com/package/react-drag-and-drop)
+    - [用 React Hooks 的方式使用 react-dnd](https://juejin.im/post/5d6dd4e4e51d453bb13b6680)
+    - [使用 Drag and Drop 给Web应用提升交互体验](https://www.cnblogs.com/jlfw/p/11809988.html)
+    - [ReactHooks+ReactDnd实现拖动数据加载](https://segmentfault.com/a/1190000020691892?utm_source=tag-newest)
+    - [Drag&Drop 拖放API简介以及在React中的实践](https://blog.csdn.net/weixin_34023982/article/details/91452188)
+ 
 ----------------
 
 ## Hook
@@ -139,6 +153,6 @@ data : json, 参考config/data.js
 
 1. react-native-listener
     - [NativeListener](https://www.helplib.com/GitHub/article_119880)
-2. [react-drag-and-drop](https://www.npmjs.com/package/react-drag-and-drop)
-    - [使用 Drag and Drop 给Web应用提升交互体验](https://www.cnblogs.com/jlfw/p/11809988.html)
-    - [参考](https://blog.csdn.net/weixin_34023982/article/details/91452188)
+
+    
+    

@@ -50,8 +50,8 @@ const ComponentSelector = function () {
                    className='comItem'
                    onClick={() => newItem(component)}
               >
-                <Icon type={component.icon} theme="filled" />
-                &nbsp;{component.name}
+                <Icon type={component.icon} theme="filled" /> &nbsp;
+                {component.name}
               </div>
             )}
           </Panel>
