@@ -3,7 +3,7 @@
 页面配置数据编辑器, 流程:
 1. 将页面(pc/mobile)dom树(组件)抽象为json数据
 2. 可视化编辑抽象数据
-3. 进一步将配置对象依赖各端组件渲染为
+3. 进一步将配置对象(树结构)依赖各端组件渲染为
     1. 小程序展示
     2. pc/h5 react/vue或服务端渲染
     
@@ -61,7 +61,8 @@ declare interface ComponentData {
 3. 编辑属性
 
 ## 配置存储结构
-data : json
+
+data : json, 参考config/data.js
 ```
 [
     {
