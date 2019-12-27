@@ -65,5 +65,8 @@ export default [
         }
       },
     ]
+  }, {
+    groupName : '业务组件',
+    child: []
   }
 ]

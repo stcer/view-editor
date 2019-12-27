@@ -22,11 +22,8 @@ declare interface  Component{
     PropEditor:ComponentType
     create():ComponentData
     appendChild(selfData:ComponentData, child:ComponentData):void
-    props:ComponentDataProps
-    child: Component[]
     icon:string
     name:string
-    isContainer:boolean
 }
 
 declare interface MapFunc {
