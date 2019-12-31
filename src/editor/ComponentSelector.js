@@ -1,7 +1,8 @@
 import { Icon, Collapse } from 'antd'
 
 import React from 'react'
-import { useComponentContext, useActiveContext, addNewComponent } from '../inc'
+import { useComponentContext, useActiveContext } from '../inc'
+import { addTopItem, saveItem, getNextId } from '../store'
 
 const { Panel } = Collapse;
 
@@ -9,8 +10,27 @@ const ComponentSelector = function () {
   const {active} = useActiveContext()
   const {findComponentByType, components} = useComponentContext()
 
-  const add = (component) => {
-    addNewComponent(component, active, findComponentByType)
+  /**
+   * 向容器增加新组件
+   * @param component
+   */
+  const newItem = (component) => {
+    const props = Object.assign({}, component.props);
+    const newComponent = {
+      ...component.create(props),
+      type: component.TYPE,
+      id: getNextId()
+    }
+
+    if(active) {
+      const parentComponent = findComponentByType(active.type)
+      if(parentComponent.appendChild){
+        parentComponent.appendChild(active, newComponent);
+        saveItem(active)
+      }
+    } else {
+      addTopItem(newComponent)
+    }
   }
 
   return (
@@ -27,7 +47,7 @@ const ComponentSelector = function () {
             {group.child.map((component) =>
               <div key={component.TYPE}
                    className='comItem'
-                   onClick={() => add(component)}
+                   onClick={() => newItem(component)}
               >
                 <Icon type={component.icon} theme="filled" /> &nbsp;
                 {component.name}

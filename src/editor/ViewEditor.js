@@ -40,7 +40,7 @@ export default function ViewEditor ({ data }) {
 const renderChild = (child) => {
   let el;
   if(!(child instanceof Array) || child.length === 0) {
-    el = <EmptyContainer />;
+    el = <div className={'emptyContainer'}>请插入内容</div>;
   } else {
     el = child.map((item) => <ComponentRender key={item.id} item={item} />)
   }
@@ -70,14 +70,11 @@ export function ComponentRender ({ item }) {
   const component = findComponentByType(item.type)
   const isActive = active && item.id === active.id
 
-
   // 使用 useDrag
   const [, drag] = useDrag({
     item: { item, type: 'Box' },
-    // canDrag() {
-    //   return false;
-    // }
   })
+
   const [, drop] = useDrop({
     accept: 'Box',
 
@@ -114,10 +111,3 @@ export function ComponentRender ({ item }) {
     </div>
   )
 }
-
-export const EmptyContainer = () => {
-  return (
-    <div className={'emptyContainer'}>请插入内容</div>
-  )
-}
-

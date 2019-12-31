@@ -53,12 +53,6 @@ declare interface ActiveComponentContext {
 
 declare function useActiveContext(): ActiveComponentContext
 declare function useActiveContextValue(): ActiveComponentContext
-declare function addNewComponent(
-    component : ComponentData,
-    parent: ComponentData,
-    componentFactory
-): void
-
 
 /**
  * dom tool

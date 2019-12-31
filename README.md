@@ -139,6 +139,10 @@ data : json, 参考config/data.js
 2. 调整同级组件顺序
 3. 将组件整体更换父容器
 
+### todo
+
+拖拽时激活组件活动容器
+
 参考 
 - [React DnD](https://react-dnd.github.io/react-dnd/examples)
     - [npm: react-drag-and-drop](https://www.npmjs.com/package/react-drag-and-drop)
@@ -146,12 +150,10 @@ data : json, 参考config/data.js
     - [使用 Drag and Drop 给Web应用提升交互体验](https://www.cnblogs.com/jlfw/p/11809988.html)
     - [ReactHooks+ReactDnd实现拖动数据加载](https://segmentfault.com/a/1190000020691892?utm_source=tag-newest)
     - [Drag&Drop 拖放API简介以及在React中的实践](https://blog.csdn.net/weixin_34023982/article/details/91452188)
+    
  
 ----------------
 
-## Hook
-1. 返回状态对象及其修改的Handle
-1. 状态通过副作用延时修改
 
 ## 依赖组件
 
