@@ -5,7 +5,7 @@ import { fixArrayLength, fixNumberRange } from '../inc'
 const { TabPane } = Tabs
 let SelCol = 0
 
-export const ViewEditor = ({ panes, style, child, childRender }) => {
+export const ViewEditor = ({ panes, style, child, renderChild }) => {
   return (
     <Tabs
       defaultActiveKey="1"
@@ -19,7 +19,7 @@ export const ViewEditor = ({ panes, style, child, childRender }) => {
       }>
       {panes.map((item, index) =>
         <TabPane tab={item.title} key={item.key}>
-          {childRender(child[index])}
+          {renderChild(child[index])}
         </TabPane>
       )}
     </Tabs>

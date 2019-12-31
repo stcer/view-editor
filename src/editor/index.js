@@ -25,7 +25,9 @@ const Editor = function ({ components, initData }) {
           <ToolBar history={history} />
           <Row>
             <Col span={3}><ComponentSelector /></Col>
-            <Col span={15}><ViewEditor data={data} /></Col>
+            <Col span={15}>
+              <ViewEditor data={data} />
+            </Col>
             <Col span={6}><PropEditor /></Col>
           </Row>
         </div>

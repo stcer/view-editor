@@ -53,6 +53,12 @@ declare interface ActiveComponentContext {
 
 declare function useActiveContext(): ActiveComponentContext
 declare function useActiveContextValue(): ActiveComponentContext
+declare function addNewComponent(
+    component : ComponentData,
+    parent: ComponentData,
+    componentFactory
+): void
+
 
 /**
  * dom tool
@@ -79,6 +85,9 @@ declare interface MouseState {
     handler:MouseHandle
 }
 
-declare function useMouseLayerPosition(topDomClassName: string):MouseState
+declare function useMouseLayerPosition(
+    topDomClassName: string,
+    sizeTargetClassName: string
+):MouseState
 declare function fixArrayLength(arr: [], length:number, fillItem:any):[]
 declare function fixNumberRange(n: number, min:number, max:number):number

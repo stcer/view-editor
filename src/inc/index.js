@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react'
 
+import { getNextId, saveItem, addTopItem } from '../store'
 export * from './dom-tool'
 export * from './tool'
 
@@ -64,4 +65,26 @@ export const DataContext = React.createContext({
 
 export const useDataContext = () => {
   return useContext(DataContext)
+}
+
+/**
+ * 向容器增加新组件
+ */
+export const addNewComponent = (component, parent, componentFactory) => {
+  const props = Object.assign({}, component.props);
+  const newComponent = {
+    ...component.create(props),
+    type: component.TYPE,
+    id: getNextId()
+  }
+
+  if(parent) {
+    const parentComponent = componentFactory(parent.type)
+    if (parentComponent.appendChild) {
+      parentComponent.appendChild(parent, newComponent);
+      saveItem(parent)
+    }
+  } else {
+    addTopItem(newComponent)
+  }
 }

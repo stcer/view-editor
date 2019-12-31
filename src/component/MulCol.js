@@ -4,13 +4,13 @@ import { fixArrayLength, fixNumberRange } from '../inc'
 
 let SelCol = 0;
 
-export const ViewEditor = ({ cols, style, child, childRender }) => {
+export const ViewEditor = ({ cols, style, child, renderChild }) => {
   return (
     <Row style={style}>
     {cols.map((col, index) =>
       <Col span={col.width} key={index}>
         <div onClick={() => SelCol = index}>
-          {childRender(child[index])}
+          {renderChild(child[index])}
         </div>
       </Col>
     )}
@@ -43,7 +43,7 @@ export const PropEditor = ({data, saveProp}) => {
       </Form.Item>
       <Row>
       {cols.map((col, index) =>
-        <Col span={argvWidth}>
+        <Col key={index} span={argvWidth}>
           <Form.Item label="列宽">
             <Input
               onChange={(e) => setWidth(index, e.target.value)}

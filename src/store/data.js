@@ -79,6 +79,55 @@ export const addTopItem = (item) => {
   })
 }
 
+const findParent = (data, item) => {
+  let itemParent, itemIndex
+  traversal(data, (node, parent, index) => {
+    if (node.id === item.id) {
+      itemParent = parent;
+      itemIndex = index;
+    }
+  })
+  return [itemParent, itemIndex]
+}
+
+export const moveUp = (item) => {
+  store.set((state) => {
+    const [itemParent, itemIndex] = findParent(state.data, item)
+    if(!itemParent || itemIndex === 0) {
+      return state;
+    }
+    const targetIndex = itemIndex - 1;
+    itemParent[itemIndex] = itemParent[targetIndex]
+    itemParent[targetIndex] = item
+    return { ...state }
+  })
+}
+
+export const moveDown = (item) => {
+  store.set((state) => {
+    const [itemParent, itemIndex] = findParent(state.data, item)
+    if(!itemParent || itemIndex === itemParent.length - 1) {
+      return state;
+    }
+
+    const targetIndex = itemIndex + 1;
+    itemParent[itemIndex] = itemParent[targetIndex]
+    itemParent[targetIndex] = item
+    return { ...state }
+  })
+}
+
+export const removeItem = (item) => {
+  store.set((state) => {
+    const [parent, index] = findParent(state.data, item)
+    if(!parent) {
+      return state;
+    }
+    parent.splice(index, 1); // 删除元素
+    return { ...state }
+  })
+}
+
 export const resetData = (data) => {
   initMaxId(data)
   store.set(() => {

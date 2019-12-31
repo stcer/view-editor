@@ -1,9 +1,9 @@
 import React from 'react'
 
-export const ViewEditor = ({ value, style, child, childRender }) => {
+export const ViewEditor = ({ value, style, child, renderChild }) => {
   return (
     <div style={{ ...style }}>
-      {childRender(child)}
+      {renderChild(child)}
     </div>
   )
 }
@@ -25,6 +25,9 @@ export const create = (props) => {
 }
 
 export const appendChild = (selfData, child) => {
+  if(!selfData.props.child){
+    selfData.props.child = []
+  }
   selfData.props.child.push(child)
 }
 
