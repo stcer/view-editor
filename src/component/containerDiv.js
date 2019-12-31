@@ -1,10 +1,9 @@
 import React from 'react'
-import RenderContainerChild from './RenderContainerChild'
 
-export const ViewEditor = ({ value, style, child, renderNodes }) => {
+export const ViewEditor = ({ value, style, child, childRender }) => {
   return (
     <div style={{ ...style }}>
-      <RenderContainerChild child={child} renderNodes={renderNodes} />
+      {childRender(child)}
     </div>
   )
 }

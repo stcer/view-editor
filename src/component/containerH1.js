@@ -8,7 +8,6 @@ export const icon = 'info-circle'
 export const name = 'H1'
 export const isContainer = false
 
-
 export const ViewEditor = ({ value, label, style }) => {
   return (
     React.createElement(label || TYPE, { style }, [value])

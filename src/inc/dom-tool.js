@@ -1,35 +1,6 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 // import NativeListener from 'react-native-listener'
 
-export const renderComponents = (data, comMaker, mouseHandler, active) => {
-  const renderNode = (item) => {
-    if (!item) {
-      return
-    }
-
-    const mouseHandles = { ...mouseHandler }
-    mouseHandles.onClick = (e) => {
-      e.stopPropagation()
-      mouseHandler.onClick(item, e)
-    }
-
-    const props = Object.assign({renderNode, renderNodes}, item.props)
-    const component = comMaker(item.type)
-    const isActive = active && item.id === active.id
-
-    return (
-      <div {...mouseHandles}
-         id={"com-" + item.id}
-         key={item.id}
-         className={isActive ? 'activeComponent' : ''}>
-        {React.createElement(component.ViewEditor, props)}
-      </div>
-    )
-  }
-
-  const renderNodes = (data) => data.map((item) => renderNode(item))
-  return renderNodes(data)
-}
 
 const getDOMPosition = (target, topDomClassName) => {
   let left = 0

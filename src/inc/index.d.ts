@@ -57,13 +57,6 @@ declare function useActiveContextValue(): ActiveComponentContext
 /**
  * dom tool
  */
-declare function renderComponents(
-    data: ComponentData[],
-    comMaker:FindComponent,
-    mouseHandler:object,
-    active: ComponentData
-): ReactElement
-
 declare interface MousePosition {
     left: number
     top: number

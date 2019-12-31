@@ -1,17 +1,16 @@
 import { Row, Col, Form, Input } from 'antd'
 import React from 'react'
 import { fixArrayLength, fixNumberRange } from '../inc'
-import RenderContainerChild from './RenderContainerChild'
 
 let SelCol = 0;
 
-export const ViewEditor = ({ cols, style, child, renderNodes }) => {
+export const ViewEditor = ({ cols, style, child, childRender }) => {
   return (
     <Row style={style}>
     {cols.map((col, index) =>
       <Col span={col.width} key={index}>
         <div onClick={() => SelCol = index}>
-          <RenderContainerChild child={child[index]} renderNodes={renderNodes} />
+          {childRender(child[index])}
         </div>
       </Col>
     )}

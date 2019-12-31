@@ -1,12 +1,11 @@
 import { Tabs, Form, Input } from 'antd'
 import React from 'react'
 import { fixArrayLength, fixNumberRange } from '../inc'
-import RenderContainerChild from './RenderContainerChild'
 
 const { TabPane } = Tabs
 let SelCol = 0
 
-export const ViewEditor = ({ panes, style, child, renderNodes }) => {
+export const ViewEditor = ({ panes, style, child, childRender }) => {
   return (
     <Tabs
       defaultActiveKey="1"
@@ -20,7 +19,7 @@ export const ViewEditor = ({ panes, style, child, renderNodes }) => {
       }>
       {panes.map((item, index) =>
         <TabPane tab={item.title} key={item.key}>
-          <RenderContainerChild child={child[index]} renderNodes={renderNodes} />
+          {childRender(child[index])}
         </TabPane>
       )}
     </Tabs>
