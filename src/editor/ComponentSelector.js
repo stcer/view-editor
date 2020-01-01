@@ -11,7 +11,7 @@ const ComponentSelector = function () {
   const { addChildFromComponent, components } = useComponentContext()
 
   return (
-    <div className={'componentSelector'}>
+    <div className={'je-component-selector'}>
       <Collapse
         defaultActiveKey={['0', '1']}
         bordered={false}
@@ -22,7 +22,7 @@ const ComponentSelector = function () {
         {components.map((group, index) =>
           <Panel header={group.groupName} key={index}>
             {group.child.map((component) =>
-              <div key={component.TYPE} className='comItem'>
+              <div key={component.TYPE} className='je-com-item'>
                 <MenuItem component={component} onClick={() => addChildFromComponent(active, component)} />
               </div>
             )}

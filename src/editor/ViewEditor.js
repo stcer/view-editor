@@ -19,7 +19,7 @@ export default function ViewEditor ({ data }) {
   MouseChangeHandler = handler
 
   return (
-    <div className={'viewEditor'}>
+    <div className={'je-view-editor'}>
       <div className={TopCntClassName} style={{ position: 'relative' }}>
         {renderChild(data)}
       </div>
@@ -31,13 +31,13 @@ export default function ViewEditor ({ data }) {
 const renderChild = (child) => {
   let el
   if (!(child instanceof Array) || child.length === 0) {
-    el = <div className={'emptyContainer'}>请插入内容</div>
+    el = <div className={'je-empty-container'}>请插入内容</div>
   } else {
     el = child.map((item) => <ComponentRender key={item.id} item={item} />)
   }
 
   return (
-    <div className={'j-component-container'}>
+    <div className={'je-component-container'}>
       {el}
     </div>
   )
@@ -71,7 +71,7 @@ export function ComponentRender ({ item }) {
   }
 
   return (
-    <div onClick={onClick} className={isActive ? 'activeComponent' : ''}>
+    <div onClick={onClick} className={isActive ? 'je-active-component' : ''}>
       <ViewEditTool item={item} active={active} />
       <div {...comDomProps}>
         {React.createElement(component.ViewEditor, props)}

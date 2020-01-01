@@ -21,7 +21,7 @@ const Editor = function ({ components, initData }) {
   return (
     <ComponentsContext.Provider value={componentContextValue}>
       <ActiveComponentContext.Provider value={activeContextValue}>
-        <div className={'j-editor'}>
+        <div className={'je-editor'}>
           <ToolBar history={history} />
           <Row>
             <Col span={3}><ComponentSelector /></Col>

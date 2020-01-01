@@ -3,18 +3,12 @@ export default [
     'id': 1,
     'type': 'div',
     'props': {
-      'title': 'div容器的标题',
-      'style': {
-        'width': '100%',
-        'padding': '4px',
-        'border': '2px solid #fff'
-      },
       'child': [
         {
           'id': 2,
           'type': 'h1',
           'props': {
-            'value': 'This is a my title H1',
+            'value': '九正建材网页面编辑器',
           }
         },
 
@@ -22,19 +16,13 @@ export default [
           'id': 3,
           'type': 'div',
           'props': {
-            'title': 'div容器的标题',
-            'style': {
-              'width': '100%',
-              'padding': '14px',
-              'border': '1px solid #fff'
-            },
             'child': [
               {
                 'id': 4,
                 'type': 'h2',
                 'props': {
                   label: 'h2',
-                  'value': 'This is a my title h2',
+                  'value': '使用说明',
                 }
               },
             ]
@@ -48,7 +36,22 @@ export default [
   {
     'id': 5,
     'type': 'div',
-    'props': {}
+    'props': {
+      child: [
+        {
+          id: 61, type: 'richText',
+          props: {
+            value: 'demo rich text'
+          }
+        },
+        {
+          id: 62, type: 'richText',
+          props: {
+            value: 'demo rich text2'
+          }
+        }
+      ]
+    }
   },
 
   {
@@ -60,22 +63,9 @@ export default [
         { width: 12 },
       ],
       child: [
-        [{
-          id: 61, type: 'richText',
-          props: {
-            value: 'demo rich text'
-          }
-        },
-          {
-            id: 62, type: 'richText',
-            props: {
-              value: 'demo rich text2'
-            }
-          }
-        ],
         [
           {
-            'id': 7,
+            'id': 9,
             'type': 'tab',
             props: {
               panes: [
@@ -89,6 +79,23 @@ export default [
                 [],
                 [],
                 []
+              ]
+            }
+          }
+        ],
+        [
+          {
+            'id': 7,
+            'type': 'tab',
+            props: {
+              panes: [
+                { 'title': 'Tab 1222', 'key': 1 },
+                { 'title': 'Tab 2', 'key': 2 },
+                { 'title': 'Tab 3', 'key': 3 },
+              ],
+              child: [
+                [],
+                [],
               ]
             }
           }
@@ -108,24 +115,7 @@ export default [
       ],
       child: [
         [],
-        [{
-          'id': 9,
-          'type': 'tab',
-          props: {
-            panes: [
-              { 'title': 'Tab 1', 'key': 1 },
-              { 'title': 'Tab 2', 'key': 2 },
-              { 'title': 'Tab 3', 'key': 3 },
-            ],
-            child: [
-              [],
-              [],
-              [],
-              [],
-              []
-            ]
-          }
-        }],
+        [],
         [],
       ]
     }

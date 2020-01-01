@@ -1,5 +1,7 @@
 # 概述
 
+![](doc/intro.jpg)
+
 页面配置数据编辑器, 流程:
 1. 将页面(pc/mobile)dom树(组件)抽象为json数据
 2. 可视化编辑抽象数据
@@ -10,6 +12,8 @@
 在此基础可进一步拓展:
 1. 页面/组件代码生成
 2. 表单设计器
+
+
 
 ## 核心解决的问题
 
@@ -168,3 +172,16 @@ data : json, 参考config/data.js
 
     
     
+
+
+```
+render({type, props}) {
+    if(type == 'goods') {
+        return <Goods {...props} />
+    } elseif(type === 'ticket') {
+        return <Ticket {...props} />
+    } elseif(type === 'tab') {
+        return <Tab {...props} />
+    } 
+}
+```

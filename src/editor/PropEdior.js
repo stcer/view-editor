@@ -29,7 +29,7 @@ const PropEditor = function () {
   }
 
   return (
-    <div className={'propEditor'}>
+    <div className={'je-prop-editor'}>
       <h3>属性编辑</h3>
       {element.map((el) => el)}
     </div>

@@ -1,9 +1,9 @@
-.j-editor {
+.je-editor {
     min-height: 100vh;
 }
 
-.j-editor .edit_layer,
-.ant-modal .edit_layer{
+.je-editor .je-edit-mask,
+.ant-modal .je-edit-mask{
     opacity: 0.4;
     background: #eee;
     border:1px dashed #999;
@@ -12,43 +12,43 @@
     z-index: 100000;
 }
 
-.j-editor .viewEditor {
+.je-view-editor {
     padding:20px;
     min-height: 100vh;
     border-left: 1px solid #ccd;
     border-right: 1px solid #ccd;
 }
 
-.j-editor .activeComponent {
+.je-toolBar {
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+    padding-left:20px;
+}
+
+.je-active-component {
     border: 1px dotted #c00;
 }
 
-    .propEditor,
-    .componentSelector {
+    .je-prop-editor,
+    .je-component-selector {
         background: #f7f7f7;
         padding:12px;
         min-height: 100vh;
     }
 
-    .componentSelector {
+    .je-component-selector {
         background: #eee;
     }
-    .componentSelector .comItem {
+    .je-com-item {
         font-size: 16px;
     }
 
-    .toolBar {
-        border-bottom: 1px solid #ccc;
-        padding: 10px;
-        padding-left:20px;
-    }
-
-    .emptyContainer {
+    .je-empty-container {
         background: #f1f1f1;
         padding:10px;
         margin: 10px;
     }
 
-    .emptyContainer .active{
-        background: #fff;
-    }
+.je-component-container {
+    padding: 5px;
+}
