@@ -48,6 +48,8 @@ declare interface ComponentsContext {
     addChildFromProps(parent: ComponentData, type: string, props: ComponentDataPropsOptions): void,
 
     addChildFromComponent(parent: ComponentData, component: Component, props?: ComponentDataPropsOptions): void,
+
+    changeParent(parent: ComponentData, newItem: ComponentData):void
 }
 
 declare function useComponentsContextValue(components: []): ComponentsContext

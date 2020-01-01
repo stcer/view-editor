@@ -12,7 +12,7 @@ const initMaxId = (data) => {
   console.log("DATA:MaxId:", maxId)
 }
 
-const traversal = (data, callback) => {
+export const traversal = (data, callback) => {
   const cursor = (items) => {
     items.forEach((item, index) => {
       if(item instanceof Array) {
@@ -119,6 +119,7 @@ export const moveDown = (item) => {
 
 export const removeItem = (item) => {
   store.set((state) => {
+    history.add(state.data)
     const [parent, index] = findParent(state.data, item)
     if(!parent) {
       return state;

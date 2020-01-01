@@ -1,10 +1,8 @@
-import { Icon } from 'antd'
 import React from 'react'
-import { useDrag } from 'react-dnd'
 
-import { useActiveContext, useMouseLayerPosition, useComponentContext, useComponentDrop, DNDItem } from '../inc'
-import { moveUp, moveDown, removeItem } from '../store'
+import { useActiveContext, useMouseLayerPosition, useComponentContext, useComponentDrop } from '../inc'
 import ViewEditLayer from './ViewEditLayer'
+import ViewEditTool from './ViewEditTool'
 
 const TopCntClassName = 'j-components'
 const ComClassName = 'j-component'
@@ -58,18 +56,7 @@ export function ComponentRender ({ item }) {
   const component = findComponentByType(item.type)
   const isActive = active && item.id === active.id
 
-  // 使用 useDrag
-  const [, drag] = useDrag({
-    item: { item, type: DNDItem.type },
-    })
   const [{isOver, isOverCurrent}, drop] = useComponentDrop(item)
-
-  const topBarStyle = {
-    padding: '3px 10px',
-    backgroundColor: '#999',
-    display: isActive ? 'inline-block' : 'none',
-    color: '#fff',
-  }
 
   const comDomProps = {
     ...MouseChangeHandler,
@@ -78,20 +65,14 @@ export function ComponentRender ({ item }) {
     style: getStyle(isOverCurrent || isOver ?　'rgba(128, 128, 128, .1)' : '')
   }
 
-  return (
-    <div
-      onClick={(e) => {
-        e.stopPropagation()
-        setActive(item)
-      }}
-      className={isActive ? 'activeComponent' : ''}
-    >
-      <div ref={drag} style={topBarStyle}>
-        <Icon type="caret-up" onClick={() => moveUp(active)} theme="filled" /> &nbsp;
-        <Icon type="caret-down" onClick={() => moveDown(active)} theme="filled" /> &nbsp;
-        <Icon type="close" onClick={() => removeItem(active)} /> &nbsp;
-      </div>
+  const onClick = (e) => {
+    e.stopPropagation()
+    setActive(item)
+  }
 
+  return (
+    <div onClick={onClick} className={isActive ? 'activeComponent' : ''}>
+      <ViewEditTool item={item} active={active} />
       <div {...comDomProps}>
         {React.createElement(component.ViewEditor, props)}
       </div>
