@@ -33,7 +33,7 @@ export default [
                 'id': 4,
                 'type': 'h2',
                 'props': {
-                  label : 'h2',
+                  label: 'h2',
                   'value': 'This is a my title h2',
                 }
               },
@@ -48,9 +48,7 @@ export default [
   {
     'id': 5,
     'type': 'div',
-    'props': {
-
-    }
+    'props': {}
   },
 
   {
@@ -58,20 +56,32 @@ export default [
     'type': 'mul-col-2',
     'props': {
       cols: [
-        {width: 12},
-        {width: 12},
+        { width: 12 },
+        { width: 12 },
       ],
       child: [
-        [],
+        [{
+          id: 61, type: 'richText',
+          props: {
+            value: 'demo rich text'
+          }
+        },
+          {
+            id: 62, type: 'richText',
+            props: {
+              value: 'demo rich text2'
+            }
+          }
+        ],
         [
           {
             'id': 7,
             'type': 'tab',
             props: {
               panes: [
-                {'title':  'Tab 1', 'key': 1},
-                {'title':  'Tab 2', 'key': 2},
-                {'title':  'Tab 3', 'key': 3},
+                { 'title': 'Tab 1', 'key': 1 },
+                { 'title': 'Tab 2', 'key': 2 },
+                { 'title': 'Tab 3', 'key': 3 },
               ],
               child: [
                 [],
@@ -91,10 +101,10 @@ export default [
     'id': 8,
     'type': 'mul-col-3',
     props: {
-      cols : [
-        {width: 8},
-        {width: 8},
-        {width: 8},
+      cols: [
+        { width: 8 },
+        { width: 8 },
+        { width: 8 },
       ],
       child: [
         [],
@@ -103,9 +113,9 @@ export default [
           'type': 'tab',
           props: {
             panes: [
-              {'title':  'Tab 1', 'key': 1},
-              {'title':  'Tab 2', 'key': 2},
-              {'title':  'Tab 3', 'key': 3},
+              { 'title': 'Tab 1', 'key': 1 },
+              { 'title': 'Tab 2', 'key': 2 },
+              { 'title': 'Tab 3', 'key': 3 },
             ],
             child: [
               [],

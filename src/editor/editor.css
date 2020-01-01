@@ -12,39 +12,43 @@
     z-index: 100000;
 }
 
-.j-editor .activeComponent {
-    border: 1px dotted #c00;
-}
-
-.viewEditor {
+.j-editor .viewEditor {
     padding:20px;
     min-height: 100vh;
     border-left: 1px solid #ccd;
     border-right: 1px solid #ccd;
 }
 
-.propEditor,
-.componentSelector {
-    background: #f7f7f7;
-    padding:12px;
-    min-height: 100vh;
+.j-editor .activeComponent {
+    border: 1px dotted #c00;
 }
 
-.componentSelector {
-    background: #eee;
-}
-.componentSelector .comItem {
-    font-size: 16px;
-}
+    .propEditor,
+    .componentSelector {
+        background: #f7f7f7;
+        padding:12px;
+        min-height: 100vh;
+    }
 
-.toolBar {
-    border-bottom: 1px solid #ccc;
-    padding: 10px;
-    padding-left:20px;
-}
+    .componentSelector {
+        background: #eee;
+    }
+    .componentSelector .comItem {
+        font-size: 16px;
+    }
 
-.emptyContainer {
-    background: #f1f1f1;
-    padding:20px;
-    margin: 20px;
-}
+    .toolBar {
+        border-bottom: 1px solid #ccc;
+        padding: 10px;
+        padding-left:20px;
+    }
+
+    .emptyContainer {
+        background: #f1f1f1;
+        padding:10px;
+        margin: 10px;
+    }
+
+    .emptyContainer .active{
+        background: #fff;
+    }

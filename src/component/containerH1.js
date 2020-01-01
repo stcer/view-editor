@@ -17,7 +17,6 @@ export const ViewEditor = ({ value, label, style }) => {
 export const PropEditor = ({ data, saveProp }) => {
   const { props } = data
   const labels = ['h1', 'h2', 'h3', 'h4', 'h5', 'p']
-  console.log(data.props)
   const { label = TYPE } = data.props
   return (
     <Form>

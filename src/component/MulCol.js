@@ -1,31 +1,36 @@
 import { Row, Col, Form, Input } from 'antd'
-import React from 'react'
+import React, { useState } from 'react'
 import { fixArrayLength, fixNumberRange } from '../inc'
 
-let SelCol = 0;
+let SelCol = 0
 
 export const ViewEditor = ({ cols, style, child, renderChild }) => {
+  const [active, setActive] = useState(SelCol)
+  const setActiveCol = (index) => {
+    SelCol = index
+    setActive(index)
+  }
   return (
     <Row style={style}>
-    {cols.map((col, index) =>
-      <Col span={col.width} key={index}>
-        <div onClick={() => SelCol = index}>
-          {renderChild(child[index])}
-        </div>
-      </Col>
-    )}
+      {cols.map((col, index) =>
+        <Col span={col.width} key={index}>
+          <div className={active === index ? 'active' : ''} onClick={() => setActiveCol(index)}>
+            {renderChild(child[index])}
+          </div>
+        </Col>
+      )}
     </Row>
   )
 }
 
-export const PropEditor = ({data, saveProp}) => {
-  const {props} = data
-  const {cols} = props
+export const PropEditor = ({ data, saveProp }) => {
+  const { props } = data
+  const { cols } = props
   const argvWidth = 24 / cols.length
 
   const setWidth = (target, width) => {
     cols[target].width = fixNumberRange(width, 1, 23)
-    saveProp({cols})
+    saveProp({ cols })
   }
 
   const setTabN = (n) => {
@@ -42,15 +47,15 @@ export const PropEditor = ({data, saveProp}) => {
           value={props.cols.length} />
       </Form.Item>
       <Row>
-      {cols.map((col, index) =>
-        <Col key={index} span={argvWidth}>
-          <Form.Item label="列宽">
-            <Input
-              onChange={(e) => setWidth(index, e.target.value)}
-              value={col.width} />
-          </Form.Item>
-        </Col>
-      )}
+        {cols.map((col, index) =>
+          <Col key={index} span={argvWidth}>
+            <Form.Item label="列宽">
+              <Input
+                onChange={(e) => setWidth(index, e.target.value)}
+                value={col.width} />
+            </Form.Item>
+          </Col>
+        )}
       </Row>
     </Form>
   )
@@ -59,7 +64,7 @@ export const PropEditor = ({data, saveProp}) => {
 export const icon = 'plus-circle'
 export const TYPE = 'mul-col-2'
 export const name = '二列布局'
-export const isContainer = false;
+export const isContainer = false
 
 export const appendChild = (selfData, child) => {
   selfData.props.child[SelCol].push(child)
@@ -68,9 +73,9 @@ export const appendChild = (selfData, child) => {
 export const create = (props) => {
   return {
     'props': {
-      cols : [
-        {width: 12},
-        {width: 12},
+      cols: [
+        { width: 12 },
+        { width: 12 },
       ],
       child: [
         [],

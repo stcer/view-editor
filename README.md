@@ -11,6 +11,11 @@
 1. 页面/组件代码生成
 2. 表单设计器
 
+## 核心解决的问题
+
+1. 对数据的管理, 这里使用全局store对整个页面数据进行管理
+2. 拖拽嵌套的问题, 解决方案[参考](https://react-dnd.github.io/react-dnd/examples/nesting/drop-targets)
+
 ## 组件的定义
 
 核心逻辑:　根据组件的存储结构, 渲染/增加子节点/编辑属性高度自治
@@ -141,7 +146,8 @@ data : json, 参考config/data.js
 
 ### todo
 
-拖拽时激活组件活动容器
+- 拖拽时激活组件活动容器
+- 全部删除时再增加内容存在问题
 
 参考 
 - [React DnD](https://react-dnd.github.io/react-dnd/examples)

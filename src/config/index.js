@@ -54,7 +54,9 @@ export default [
           value : 'this is a tag h3 demo value'
         }
       },
+
       RichText,
+
       {
         ...containerH1,
         TYPE: 'p',
