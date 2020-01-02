@@ -4,7 +4,8 @@ import {
   MulCol,
   RichText,
   Tab,
-  Card
+  Card,
+  JVideo
 } from '../component/index'
 
 export default [
@@ -63,6 +64,7 @@ export default [
       },
 
       RichText,
+      JVideo,
     ]
   }, {
     groupName: '业务组件',

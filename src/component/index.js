@@ -5,6 +5,7 @@ import * as MulCol from './MulCol'
 import * as Tab from './Tab'
 import * as RichText from './RichText'
 import * as Card from './Card'
+import * as JVideo from './JVideo'
 
 export {
   ContainerDiv,
@@ -13,4 +14,5 @@ export {
   Tab,
   RichText,
   Card,
+  JVideo,
 }
