@@ -1,4 +1,4 @@
-import { Tabs, Form, Input } from 'antd'
+import { Tabs, Form, Input, Col, Row } from 'antd'
 import React from 'react'
 import { fixArrayLength, fixNumberRange } from '../inc'
 
@@ -36,6 +36,12 @@ export const PropEditor = ({ data, saveProp }) => {
       })
     })
   }
+
+  const setTitle = (target, title) => {
+    panes[target].title = title
+    saveProp({ panes })
+  }
+
   return (
     <Form>
       <Form.Item label="Tab数">
@@ -44,6 +50,13 @@ export const PropEditor = ({ data, saveProp }) => {
           value={panes.length}
         />
       </Form.Item>
+      {panes.map((pane, index) =>
+        <Form.Item label={`Tab${index + 1} 名称`}>
+          <Input
+            onChange={(e) => setTitle(index, e.target.value)}
+            value={pane.title} />
+        </Form.Item>
+      )}
     </Form>
   )
 }
@@ -54,6 +67,9 @@ export const name = 'tab标签'
 export const isContainer = false
 
 export const appendChild = (selfData, child) => {
+  if (!selfData.props.child) {
+    selfData.props.child = []
+  }
   selfData.props.child[SelCol].push(child)
 }
 

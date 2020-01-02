@@ -33,7 +33,7 @@ export const PropEditor = ({ data, saveProp }) => {
     saveProp({ cols })
   }
 
-  const setTabN = (n) => {
+  const setColN = (n) => {
     saveProp({
       cols: fixArrayLength(cols, fixNumberRange(n, 1, 5), { width: argvWidth }),
     })
@@ -43,7 +43,7 @@ export const PropEditor = ({ data, saveProp }) => {
     <Form>
       <Form.Item label="列数">
         <Input
-          onChange={(e) => setTabN(e.target.value)}
+          onChange={(e) => setColN(e.target.value)}
           value={props.cols.length} />
       </Form.Item>
       <Row>
