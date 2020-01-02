@@ -5,7 +5,9 @@ import {
   RichText,
   Tab,
   Card,
-  JVideo, WechatOfficialAccount
+  JVideo,
+  WechatOfficialAccount,
+  JImg
 } from '../component/index'
 
 export default [
@@ -35,7 +37,7 @@ export default [
       Card
     ]
   }, {
-    groupName: '文本内容',
+    groupName: '内容组件',
     child: [
       containerH1,
 
@@ -61,6 +63,7 @@ export default [
 
       RichText,
       JVideo,
+      JImg,
     ]
   }, {
     groupName: '业务组件',

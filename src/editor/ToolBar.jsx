@@ -1,13 +1,12 @@
-import { Button, Modal, Input } from 'antd'
+import { Button } from 'antd'
 import React, { useState } from 'react'
 import { useActiveContext } from '../inc'
-
-const { TextArea } = Input;
+import ShowCode from './ShowCode'
 
 export default function ToolBar ({ history, onSave, onClear, onReset, data }) {
   const { setActive } = useActiveContext()
-  const [visible, setVisible] = useState(false)
-  const dataString = JSON.stringify(data, null, 2)
+  const visibleState = useState(false)
+  const [, setVisible] = visibleState
   return (
     <div className={'je-toolBar'}>
       <Button type="primary" shape="circle" icon="undo" onClick={e => history.undo()} /> &nbsp;
@@ -18,14 +17,7 @@ export default function ToolBar ({ history, onSave, onClear, onReset, data }) {
       <Button onClick={e => setActive(null)}>清除选择</Button> &nbsp;
 
       <Button onClick={e => setVisible(true)}>查看JSON</Button> &nbsp;
-      <Modal
-        title="JSON Data"
-        visible={visible}
-        onOk={() => setVisible(false)}
-        onCancel={() => setVisible(false)}
-      >
-        <TextArea rows={20} value={dataString} />
-      </Modal>
+      <ShowCode data={data} visibleState={visibleState} />
     </div>
   )
 }

@@ -1,8 +1,9 @@
 import { Icon } from 'antd'
-import React from 'react'
+import React, { useState } from 'react'
 import { useDrag } from 'react-dnd'
 import { DNDItem, useComponentContext } from '../inc'
 import { moveUp, moveDown, removeItem, traversal, getNextId } from '../store'
+import ShowCode from './ShowCode'
 
 let Clipboard = null;
 let isCopy = false;
@@ -58,11 +59,15 @@ export default function ViewEditTool({item, active}) {
     }
   }
 
+
+  const visibleState = useState(false)
+  const [, setVisible] = visibleState
+
   const menus = [
     {title: 'up', type: 'caret-up',  onClick: () => moveUp(active)},
     {title: 'down', type: 'caret-down',  onClick: () => moveDown(active)},
+    {title: 'JSON data', type: 'code',  onClick: () => setVisible(true)},
     {title: 'copy', type: 'copy',  onClick: handleCopy},
-    {title: '删除', type: 'delete',  onClick: handleDelete },
     {title: '剪切', type: 'scissor',  onClick: handleScissor},
   ]
 
@@ -70,6 +75,8 @@ export default function ViewEditTool({item, active}) {
   if(com && com.appendChild) {
     menus.push({title: '粘贴', type: 'snippets',  onClick: handlePaste})
   }
+
+  menus.push({title: '删除', type: 'delete',  onClick: handleDelete })
 
   return (
     <div style={topBarStyle}>
@@ -81,6 +88,8 @@ export default function ViewEditTool({item, active}) {
       <div ref={drag}  style={{display: 'inline-block'}}>
         <Icon type="arrows-alt" />
       </div>
+
+      <ShowCode data={item} visibleState={visibleState} />
     </div>
   )
 }
