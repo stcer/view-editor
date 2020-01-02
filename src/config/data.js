@@ -202,6 +202,18 @@ export default [
                   },
                   "type": "richText",
                   "id": 75
+                },
+                {
+                  "props": {
+                    "title": "我的推广码",
+                    "desc": "点击识别小程序码获取更多不一样",
+                    "src": "http://static-card.jiuzheng.com//image/admin/workbench/qrcw01.png",
+                    "style": {
+                      "maxWidth": "100%"
+                    }
+                  },
+                  "type": "PromotionImg",
+                  "id": 78
                 }
               ],
               "index": 2

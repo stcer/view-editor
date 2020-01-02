@@ -7,7 +7,8 @@ import {
   Card,
   JVideo,
   WechatOfficialAccount,
-  JImg
+  JImg,
+  PromotionImg
 } from '../component/index'
 
 export default [
@@ -68,7 +69,8 @@ export default [
   }, {
     groupName: '业务组件',
     child: [
-      WechatOfficialAccount
+      WechatOfficialAccount,
+      PromotionImg,
     ]
   }
 ]

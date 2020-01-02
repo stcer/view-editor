@@ -13,7 +13,7 @@ const ComponentSelector = function () {
   return (
     <div className={'je-component-selector'}>
       <Collapse
-        defaultActiveKey={['0', '1']}
+        defaultActiveKey={['0', '1', '2']}
         bordered={false}
         expandIcon={
           ({ isActive }) => <Icon type="caret-right" rotate={isActive ? 90 : 0} />

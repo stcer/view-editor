@@ -7,6 +7,7 @@ import * as Card from './Card'
 import * as JVideo from './JVideo'
 import * as WechatOfficialAccount from './WechatOfficialAccount'
 import * as JImg from './JImg'
+import * as PromotionImg from './PromotionImg'
 
 export {
   ContainerDiv,
@@ -18,4 +19,5 @@ export {
   JVideo,
   WechatOfficialAccount,
   JImg,
+  PromotionImg,
 }
