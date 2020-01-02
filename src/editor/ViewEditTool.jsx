@@ -36,7 +36,6 @@ export default function ViewEditTool({item, active}) {
       }
     })
     Clipboard = data[0];
-    console.log(Clipboard)
     isCopy = true;
   }
 

@@ -1,3 +1,14 @@
+
+
+export const usePageData = () => {
+
+}
+
+const LocalStorageKey = '_je_data'
+export const saveData = () => {
+  localStorage.setItem(LocalStorageKey, )
+}
+
 export default [
   {
     'id': 1,

@@ -19,7 +19,7 @@ export const traversal = (data, callback) => {
         cursor(item)
       } else {
         callback(item, items, index)
-        if (item.props.child) {
+        if (item.props && item.props.child) {
           cursor(item.props.child)
         }
       }

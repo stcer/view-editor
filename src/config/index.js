@@ -56,16 +56,6 @@ export default [
       },
 
       RichText,
-
-      {
-        ...containerH1,
-        TYPE: 'p',
-        name: '段落',
-        props: {
-          label: 'p',
-          value : '默认的段落内容'
-        }
-      },
     ]
   }, {
     groupName : '业务组件',
