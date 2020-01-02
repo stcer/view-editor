@@ -52,7 +52,7 @@ export const PropEditor = ({ data, saveProp }) => {
       </Form.Item>
       <Form.Item label="活动列">
         {cols.map((col, index) =>
-          <Tag color={SelCol === index ? 'green' : ''}>{index + 1}</Tag>
+          <Tag key={index} color={SelCol === index ? 'green' : ''}>{index + 1}</Tag>
         )}
       </Form.Item>
       <Row>

@@ -4,6 +4,7 @@ import * as containerH1 from './containerH1'
 import * as MulCol from './MulCol'
 import * as Tab from './Tab'
 import * as RichText from './RichText'
+import * as Card from './Card'
 
 export {
   ContainerDiv,
@@ -11,4 +12,5 @@ export {
   MulCol,
   Tab,
   RichText,
+  Card,
 }

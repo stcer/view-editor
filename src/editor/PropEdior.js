@@ -1,7 +1,10 @@
+import { Tabs } from 'antd'
 import React from 'react'
 import { useComponentContext, useActiveContext } from '../inc'
 import { saveItem } from '../store'
 import StyleEditor from './StyleEditor'
+
+const { TabPane } = Tabs
 
 const PropEditor = function () {
   const {active} = useActiveContext();
@@ -15,23 +18,38 @@ const PropEditor = function () {
 
   if(active) {
     const component = findComponentByType(active.type)
-    element.push(React.createElement(component.PropEditor, {
-      key: 'props',
-      data : active,
-      saveHandle: saveItem,
-      saveProp
-    }, []))
-    element.push(<StyleEditor key={"style"} active={active} onChange={(style) => {
-      active.props.style = style;
-      saveItem(active)
+    if(component.PropEditor) {
+      element.push({
+        title: '属性编辑',
+        el: React.createElement(component.PropEditor, {
+          key: 'props',
+          data : active,
+          saveHandle: saveItem,
+          saveProp
+        }, [])
+      })
     }
-    }/>)
+    element.push({
+      title : '样式编辑',
+      el: <StyleEditor key={"style"} active={active} onChange={(style) => {
+        active.props.style = style;
+        saveItem(active)
+      }
+      }/>
+    })
   }
 
   return (
     <div className={'je-prop-editor'}>
-      <h3>属性编辑</h3>
-      {element.map((el) => el)}
+      {element &&
+      <Tabs defaultActiveKey="0">
+        {element.map((item, index) =>
+          <TabPane tab={item.title} key={index}>
+            {item.el}
+          </TabPane>
+        )}
+      </Tabs>
+      }
     </div>
   )
 }

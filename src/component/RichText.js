@@ -32,12 +32,6 @@ export const ViewEditor = ({ value, style, saveProp }) => {
   )
 }
 
-export const PropEditor = ({ data, saveProp }) => {
-  return (
-    <span/>
-  )
-}
-
 export const create = (props) => {
   return {
     props: {

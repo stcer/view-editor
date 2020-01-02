@@ -20,6 +20,7 @@ const Editor = function ({ components, initData, onSave, onClear, onReset }) {
         <div className={'je-editor'}>
           <ToolBar
             history={history}
+            data={data}
             onClear={onClear}
             onReset={onReset}
             onSave={() => onSave(data)}
