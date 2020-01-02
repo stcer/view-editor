@@ -5,7 +5,7 @@ import {
   RichText,
   Tab,
   Card,
-  JVideo
+  JVideo, WechatOfficialAccount
 } from '../component/index'
 
 export default [
@@ -28,11 +28,7 @@ export default [
             { width: 8 },
             { width: 8 },
           ],
-          child: [
-            [],
-            [],
-            [],
-          ]
+          child: []
         }
       },
       Tab,
@@ -68,6 +64,8 @@ export default [
     ]
   }, {
     groupName: '业务组件',
-    child: []
+    child: [
+      WechatOfficialAccount
+    ]
   }
 ]

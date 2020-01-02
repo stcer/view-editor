@@ -2,6 +2,31 @@ import { Row, Col, Form, Input, Tag } from 'antd'
 import React, { useState } from 'react'
 import { fixArrayLength, fixNumberRange } from '../inc'
 
+export const icon = 'plus-circle'
+export const TYPE = 'mul-col-2'
+export const name = '二列布局'
+export const isContainer = false
+
+export const appendChild = (selfData, child) => {
+  selfData.props.child[SelCol].push(child)
+}
+
+export const create = (props) => {
+  return {
+    'props': {
+      cols: [
+        { width: 12 },
+        { width: 12 },
+      ],
+      child: [
+        [],
+        [],
+      ],
+      ...props
+    }
+  }
+}
+
 let SelCol = 0
 
 export const ViewEditor = ({ cols, style, child, renderChild, saveProp }) => {
@@ -70,27 +95,3 @@ export const PropEditor = ({ data, saveProp }) => {
   )
 }
 
-export const icon = 'plus-circle'
-export const TYPE = 'mul-col-2'
-export const name = '二列布局'
-export const isContainer = false
-
-export const appendChild = (selfData, child) => {
-  selfData.props.child[SelCol].push(child)
-}
-
-export const create = (props) => {
-  return {
-    'props': {
-      cols: [
-        { width: 12 },
-        { width: 12 },
-      ],
-      child: [
-        [],
-        [],
-      ],
-      ...props
-    }
-  }
-}

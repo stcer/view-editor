@@ -6,6 +6,7 @@ import * as Tab from './Tab'
 import * as RichText from './RichText'
 import * as Card from './Card'
 import * as JVideo from './JVideo'
+import * as WechatOfficialAccount from './WechatOfficialAccount'
 
 export {
   ContainerDiv,
@@ -15,4 +16,5 @@ export {
   RichText,
   Card,
   JVideo,
+  WechatOfficialAccount,
 }

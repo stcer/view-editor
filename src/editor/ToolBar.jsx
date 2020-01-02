@@ -19,7 +19,7 @@ export default function ToolBar ({ history, onSave, onClear, onReset, data }) {
 
       <Button onClick={e => setVisible(true)}>查看JSON</Button> &nbsp;
       <Modal
-        title="Basic Modal"
+        title="JSON Data"
         visible={visible}
         onOk={() => setVisible(false)}
         onCancel={() => setVisible(false)}
