@@ -1,20 +1,24 @@
-import { Row, Col, Form, Input } from 'antd'
+import { Row, Col, Form, Input, Tag } from 'antd'
 import React, { useState } from 'react'
 import { fixArrayLength, fixNumberRange } from '../inc'
 
 let SelCol = 0
 
-export const ViewEditor = ({ cols, style, child, renderChild }) => {
+export const ViewEditor = ({ cols, style, child, renderChild, saveProp }) => {
   const [active, setActive] = useState(SelCol)
   const setActiveCol = (index) => {
     SelCol = index
     setActive(index)
+    saveProp({index})
   }
   return (
     <Row style={style}>
       {cols.map((col, index) =>
         <Col span={col.width} key={index}>
-          <div className={active === index ? 'active' : ''} onClick={() => setActiveCol(index)}>
+          <div
+            className={active === index ? 'je-col-active' : ''}
+            onClick={() => setActiveCol(index)}
+          >
             {renderChild(child[index])}
           </div>
         </Col>
@@ -45,6 +49,11 @@ export const PropEditor = ({ data, saveProp }) => {
         <Input
           onChange={(e) => setColN(e.target.value)}
           value={props.cols.length} />
+      </Form.Item>
+      <Form.Item label="活动列">
+        {cols.map((col, index) =>
+          <Tag color={SelCol === index ? 'green' : ''}>{index + 1}</Tag>
+        )}
       </Form.Item>
       <Row>
         {cols.map((col, index) =>

@@ -2,7 +2,7 @@ import React from 'react'
 
 export const ViewEditor = ({ value, style, child, renderChild }) => {
   return (
-    <div style={{ ...style }}>
+    <div className={"je-com-div"} style={{ ...style }}>
       {renderChild(child)}
     </div>
   )

@@ -53,10 +53,13 @@ export function ComponentRender ({ item }) {
   const { findComponentByType } = useComponentContext()
   const { active, setActive } = useActiveContext()
 
-
   const saveProp = (value) => {
-    active.props = { ...active.props, ...value }
-    saveItem(active)
+    if(active) {
+      active.props = { ...(active.props ? active.props : {}), ...value }
+      saveItem(active)
+    } else {
+      // todo
+    }
   }
 
   const props = Object.assign({ renderChild, saveProp, saveItem}, item.props)
@@ -77,9 +80,8 @@ export function ComponentRender ({ item }) {
     setActive(item)
   }
 
-
   return (
-    <div onClick={onClick} className={isActive ? 'je-active-component' : ''}>
+    <div onClick={onClick} className={isActive ? 'je-component-active' : ''}>
       <ViewEditTool item={item} active={active} />
       <div {...comDomProps}>
         {React.createElement(component.ViewEditor, props)}

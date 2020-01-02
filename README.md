@@ -23,6 +23,7 @@ npm install --save @ckeditor/ckeditor5-build-balloon-block
 ## 核心解决的问题
 
 1. 对数据的管理, 这里使用全局store对整个页面数据进行管理
+2. 渲染数据(树)可视化与组件属性编辑
 2. 拖拽嵌套的问题, 解决方案[参考](https://react-dnd.github.io/react-dnd/examples/nesting/drop-targets)
 
 ## 组件的定义
@@ -157,27 +158,7 @@ data : json, 参考config/data.js
 
 - 拖拽时激活组件活动容器
 - 全部删除时再增加内容存在问题
-
-参考 
-- [React DnD](https://react-dnd.github.io/react-dnd/examples)
-    - [npm: react-drag-and-drop](https://www.npmjs.com/package/react-drag-and-drop)
-    - [用 React Hooks 的方式使用 react-dnd](https://juejin.im/post/5d6dd4e4e51d453bb13b6680)
-    - [使用 Drag and Drop 给Web应用提升交互体验](https://www.cnblogs.com/jlfw/p/11809988.html)
-    - [ReactHooks+ReactDnd实现拖动数据加载](https://segmentfault.com/a/1190000020691892?utm_source=tag-newest)
-    - [Drag&Drop 拖放API简介以及在React中的实践](https://blog.csdn.net/weixin_34023982/article/details/91452188)
-    
- 
-----------------
-
-
-## 依赖组件
-
-1. react-native-listener
-    - [NativeListener](https://www.helplib.com/GitHub/article_119880)
-
-    
-    
-
+- 监听器, 参考dnd
 
 ```
 render({type, props}) {
@@ -190,3 +171,13 @@ render({type, props}) {
     } 
 }
 ```
+
+----------------
+
+## 参考 
+- [React DnD](https://react-dnd.github.io/react-dnd/examples)
+    - [npm: react-drag-and-drop](https://www.npmjs.com/package/react-drag-and-drop)
+    - [用 React Hooks 的方式使用 react-dnd](https://juejin.im/post/5d6dd4e4e51d453bb13b6680)
+    - [使用 Drag and Drop 给Web应用提升交互体验](https://www.cnblogs.com/jlfw/p/11809988.html)
+    - [ReactHooks+ReactDnd实现拖动数据加载](https://segmentfault.com/a/1190000020691892?utm_source=tag-newest)
+    - [Drag&Drop 拖放API简介以及在React中的实践](https://blog.csdn.net/weixin_34023982/article/details/91452188)

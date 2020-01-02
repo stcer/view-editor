@@ -1,4 +1,4 @@
-import { Tabs, Form, Input, Col, Row } from 'antd'
+import { Tabs, Form, Input } from 'antd'
 import React from 'react'
 import { fixArrayLength, fixNumberRange } from '../inc'
 
@@ -51,7 +51,7 @@ export const PropEditor = ({ data, saveProp }) => {
         />
       </Form.Item>
       {panes.map((pane, index) =>
-        <Form.Item label={`Tab${index + 1} 名称`}>
+        <Form.Item key={index} label={`Tab${index + 1} 名称`}>
           <Input
             onChange={(e) => setTitle(index, e.target.value)}
             value={pane.title} />
@@ -70,6 +70,11 @@ export const appendChild = (selfData, child) => {
   if (!selfData.props.child) {
     selfData.props.child = []
   }
+
+  if (!selfData.props.child[SelCol]) {
+    selfData.props.child[SelCol] = [];
+  }
+
   selfData.props.child[SelCol].push(child)
 }
 
@@ -82,11 +87,6 @@ export const create = (props) => {
         {'title':  'Tab 3', 'key': 3},
       ],
       child: [
-        [],
-        [],
-        [],
-        [],
-        []
       ]
     }
   }
