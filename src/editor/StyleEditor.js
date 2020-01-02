@@ -54,7 +54,7 @@ export default ({ active, onChange }) => {
 
   return (
     <Form>
-      <Form.Item label="Style editor">
+      <Form.Item label="Style edit">
         <TextArea
           rows={15}
           value={style}

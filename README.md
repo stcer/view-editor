@@ -13,7 +13,12 @@
 1. 页面/组件代码生成
 2. 表单设计器
 
+## install
 
+```
+npm install --save @ckeditor/ckeditor5-react @ckeditor/ckeditor5-build-classic
+npm install --save @ckeditor/ckeditor5-build-balloon-block
+```
 
 ## 核心解决的问题
 
@@ -136,19 +141,19 @@ data : json, 参考config/data.js
     - 点击选择当前组件
     - 可移动对象
     - 可删除
+2. 拖拽
+    1. 组件可以通过拖拽放置到容器
+    2. 调整同级组件顺序
+    3. 将组件整体更换父容器
+    
 
 ### 属性编辑区
 
 1. 根据配置渲染表单
     - 参考antd表单设计
-    
-## 拖拽解决
 
-1. 组件可以通过拖拽放置到容器
-2. 调整同级组件顺序
-3. 将组件整体更换父容器
 
-### todo
+## todo
 
 - 拖拽时激活组件活动容器
 - 全部删除时再增加内容存在问题

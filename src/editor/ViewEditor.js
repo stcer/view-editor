@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { useActiveContext, useMouseLayerPosition, useComponentContext, useComponentDrop } from '../inc'
+import { saveItem } from '../store'
 import ViewEditLayer from './ViewEditLayer'
 import ViewEditTool from './ViewEditTool'
 
@@ -52,7 +53,13 @@ export function ComponentRender ({ item }) {
   const { findComponentByType } = useComponentContext()
   const { active, setActive } = useActiveContext()
 
-  const props = Object.assign({ renderChild }, item.props)
+
+  const saveProp = (value) => {
+    active.props = { ...active.props, ...value }
+    saveItem(active)
+  }
+
+  const props = Object.assign({ renderChild, saveProp, saveItem}, item.props)
   const component = findComponentByType(item.type)
   const isActive = active && item.id === active.id
 
@@ -69,6 +76,7 @@ export function ComponentRender ({ item }) {
     e.stopPropagation()
     setActive(item)
   }
+
 
   return (
     <div onClick={onClick} className={isActive ? 'je-active-component' : ''}>

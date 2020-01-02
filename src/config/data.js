@@ -22,7 +22,7 @@ export default [
                 'type': 'h2',
                 'props': {
                   label: 'h2',
-                  'value': '使用说明',
+                  value: '使用说明',
                 }
               },
             ]
@@ -41,7 +41,7 @@ export default [
         {
           id: 61, type: 'richText',
           props: {
-            value: 'demo rich text'
+            value: `Tourists frequently admit that Taj Mahal "simply cannot be described with words". And that’s probably true. The more you try the more speechless you become. Words give only a semblance of truth. The real truth about its beauty is revealed when you adore different shades of “Taj” depending on the time of the day or when you admire the exquisite inlay work in different corners of the façade.`
           }
         },
         {
