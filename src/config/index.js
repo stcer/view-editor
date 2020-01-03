@@ -8,7 +8,7 @@ import {
   JVideo,
   WechatOfficialAccount,
   JImg,
-  PromotionImg
+  PromotionImg, JButton
 } from '../component/index'
 
 export default [
@@ -65,6 +65,7 @@ export default [
       RichText,
       JVideo,
       JImg,
+      JButton,
     ]
   }, {
     groupName: '业务组件',

@@ -23,7 +23,10 @@ const ComponentSelector = function () {
           <Panel header={group.groupName} key={index}>
             {group.child.map((component) =>
               <div key={component.TYPE} className='je-com-item'>
-                <MenuItem component={component} onClick={() => addChildFromComponent(active, component)} />
+                <MenuItem
+                  component={component}
+                  onClick={() => addChildFromComponent(active, component)}
+                />
               </div>
             )}
           </Panel>

@@ -13,18 +13,24 @@
 1. 页面/组件代码生成
 2. 表单设计器
 
-## install
-
-```
-npm install --save @ckeditor/ckeditor5-react @ckeditor/ckeditor5-build-classic
-npm install --save @ckeditor/ckeditor5-build-balloon-block
-```
 
 ## 核心解决的问题
 
 1. 对数据的管理, 这里使用全局store对整个页面数据进行管理
 2. 渲染数据(树)可视化与组件属性编辑
 2. 拖拽嵌套的问题, 解决方案[参考](https://react-dnd.github.io/react-dnd/examples/nesting/drop-targets)
+
+## todo
+
+- 拖拽时激活组件活动容器
+- 全部删除时再增加内容存在问题
+- 监听器, 参考dnd
+- 保存为组件(达到跨页面共用)
+- 预设布局模板
+
+### pc
+- 预设布局模板
+- 为栏目应用布局模板(带固定内容区)
 
 ## 组件的定义
 
@@ -118,10 +124,6 @@ data : json, 参考config/data.js
 
 ### 组件选择区
 
-- 图标化
-- 分组
-
-预设组件
 - 容器类
     - <s>div布局(1/2/3/4)列, 设置列宽</s>
     - 设置容器标题
@@ -154,24 +156,6 @@ data : json, 参考config/data.js
     - 参考antd表单设计
 
 
-## todo
-
-- 拖拽时激活组件活动容器
-- 全部删除时再增加内容存在问题
-- 监听器, 参考dnd
-
-```
-render({type, props}) {
-    if(type == 'goods') {
-        return <Goods {...props} />
-    } elseif(type === 'ticket') {
-        return <Ticket {...props} />
-    } elseif(type === 'tab') {
-        return <Tab {...props} />
-    } 
-}
-```
-
 ----------------
 
 ## 参考 
@@ -181,3 +165,8 @@ render({type, props}) {
     - [使用 Drag and Drop 给Web应用提升交互体验](https://www.cnblogs.com/jlfw/p/11809988.html)
     - [ReactHooks+ReactDnd实现拖动数据加载](https://segmentfault.com/a/1190000020691892?utm_source=tag-newest)
     - [Drag&Drop 拖放API简介以及在React中的实践](https://blog.csdn.net/weixin_34023982/article/details/91452188)
+
+```
+npm install --save @ckeditor/ckeditor5-react @ckeditor/ckeditor5-build-classic
+npm install --save @ckeditor/ckeditor5-build-balloon-block
+```

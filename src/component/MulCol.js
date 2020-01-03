@@ -8,6 +8,13 @@ export const name = '二列布局'
 export const isContainer = false
 
 export const appendChild = (selfData, child) => {
+  if (!selfData.props.child) {
+    selfData.props.child = []
+  }
+
+  if (!selfData.props.child[SelCol]) {
+    selfData.props.child[SelCol] = [];
+  }
   selfData.props.child[SelCol].push(child)
 }
 

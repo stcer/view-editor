@@ -1,7 +1,6 @@
+import { Form, Input } from 'antd'
 import React from 'react'
-import { Form, Input, Select } from 'antd'
-
-const { Option } = Select
+import JSelect from './JSelect'
 
 export const TYPE = 'h1'
 export const icon = 'info-circle'
@@ -14,9 +13,9 @@ export const ViewEditor = ({ value, label, style }) => {
   )
 }
 
+const labels = ['h1', 'h2', 'h3', 'h4', 'h5', 'p']
 export const PropEditor = ({ data, saveProp }) => {
   const { props } = data
-  const labels = ['h1', 'h2', 'h3', 'h4', 'h5', 'p']
   const { label = TYPE } = data.props
   return (
     <Form>
@@ -32,14 +31,6 @@ export const PropEditor = ({ data, saveProp }) => {
           value={props.value} />
       </Form.Item>
     </Form>
-  )
-}
-
-const JSelect = ({options, defValue, onChange}) => {
-  return (
-    <Select defaultValue={defValue} onChange={onChange}>
-      {options.map((value, index) => <Option key={index} value={value}>{value}</Option>)}
-    </Select>
   )
 }
 

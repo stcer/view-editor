@@ -8,6 +8,7 @@ import * as JVideo from './JVideo'
 import * as WechatOfficialAccount from './WechatOfficialAccount'
 import * as JImg from './JImg'
 import * as PromotionImg from './PromotionImg'
+import * as JButton from './JButton'
 
 export {
   ContainerDiv,
@@ -20,4 +21,5 @@ export {
   WechatOfficialAccount,
   JImg,
   PromotionImg,
+  JButton,
 }
