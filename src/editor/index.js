@@ -26,11 +26,15 @@ const Editor = function ({ components, initData, onSave, onClear, onReset }) {
             onSave={() => onSave(data)}
           />
           <Row>
-            <Col span={3}><ComponentSelector /></Col>
-            <Col span={15}>
+            <div className={'je-editor-left'}>
+              <ComponentSelector />
+            </div>
+            <div className={'je-editor-center'}>
               <ViewEditor data={data} />
-            </Col>
-            <Col span={6}><PropEditor /></Col>
+            </div>
+            <div className={'je-editor-right'}>
+              <PropEditor />
+            </div>
           </Row>
         </div>
       </ActiveComponentContext.Provider>

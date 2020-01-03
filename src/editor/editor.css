@@ -12,6 +12,36 @@
     z-index: 100000;
 }
 
+.je-editor-left,
+.je-editor-center,
+.je-editor-right {
+    position: fixed;
+    top: 55px;
+    bottom: 0;
+    overflow: auto;
+}
+
+.je-editor-center::-webkit-scrollbar,
+.je-editor-right::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+.je-editor-left {
+    left: 0;
+    width: 12.5%;
+}
+
+.je-editor-center {
+    left: 12.5%;
+    right: 25%;
+}
+
+.je-editor-right {
+    right: 0;
+    width: 25%;
+}
+
 .je-view-editor {
     padding:20px;
     min-height: 100vh;
