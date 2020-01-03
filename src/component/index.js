@@ -1,5 +1,5 @@
 import * as ContainerDiv from './containerDiv'
-import * as containerH1 from './containerH1'
+import * as JH1 from './JH1'
 import * as MulCol from './MulCol'
 import * as Tab from './Tab'
 import * as RichText from './RichText'
@@ -12,7 +12,7 @@ import * as JButton from './JButton'
 
 export {
   ContainerDiv,
-  containerH1,
+  JH1,
   MulCol,
   Tab,
   RichText,

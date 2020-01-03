@@ -1,6 +1,6 @@
 import {
   ContainerDiv,
-  containerH1,
+  JH1,
   MulCol,
   RichText,
   Tab,
@@ -40,10 +40,10 @@ export default [
   }, {
     groupName: '内容组件',
     child: [
-      containerH1,
+      JH1,
 
       {
-        ...containerH1,
+        ...JH1,
         TYPE: 'h2',
         name: 'H2',
         props: {
@@ -53,7 +53,7 @@ export default [
       },
 
       {
-        ...containerH1,
+        ...JH1,
         TYPE: 'h3',
         name: 'H3',
         props: {

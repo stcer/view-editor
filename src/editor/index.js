@@ -1,13 +1,13 @@
-import { Row, Col } from 'antd'
+import { Row } from 'antd'
 import React from 'react'
 import { ComponentsContext, ActiveComponentContext, useActiveContextValue, useComponentsContextValue } from '../inc'
 import { useData } from '../store'
+import ComponentSelector from './ComponentSelector'
+import './editor.css'
 
 import PropEditor from './PropEdior'
 import ToolBar from './ToolBar'
 import ViewEditor from './ViewEditor'
-import ComponentSelector from './ComponentSelector'
-import './editor.css'
 
 const Editor = function ({ components, initData, onSave, onClear, onReset }) {
   const { data, history } = useData(initData)

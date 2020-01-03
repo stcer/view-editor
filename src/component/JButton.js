@@ -22,14 +22,10 @@ export const create = (props) => {
  * @constructor
  */
 export const ViewEditor = ({ type, src, title, style }) => {
-  let value = ''
-  if(src) {
-    value = <a href={src}>{title}</a>
-  } else {
-    value = title;
-  }
   return (
-    <Button type={type} style={style}>{value}</Button>
+    <Button type={type} style={style}>
+      {src ? <a href={src}>{title}</a> : title}
+    </Button>
   )
 }
 
